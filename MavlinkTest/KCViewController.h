@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "mavlink.h"
+#import "GCDAsyncUdpSocket.h"
+#import "KCMavlinkHeartBeat.h"
+#import "KCMavlinkSysStatus.h"
 
-@interface KCViewController : UIViewController
+
+
+
+@interface KCViewController : UIViewController<NSXMLParserDelegate> {
+    
+}
+
+
 
 @end

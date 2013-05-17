@@ -1,84 +1,101 @@
 //
-//  KCViewController.m
+//  KCSokcet.m
 //  MavlinkTest
 //
-//  Created by kavi chen on 4/29/13.
-//  Copyright (c) 2013 kavi chen. All rights reserved.
+//  Created by kavi chen on 13-5-6.
+//  Copyright (c) 2013年 kavi chen. All rights reserved.
 //
 
-#import "KCViewController.h"
-#import "GCDAsyncUdpSocket.h"
-#import "KCMavlinkIO.h"
 #import "KCSokcet.h"
-#define CLIENT_IP @"127.0.0.1"
+#import "mavlink.h"
+#define SERVER_PORT 14550
+#define CLIENT_PORT 14551
 
-@interface KCViewController ()
-//@property (nonatomic,strong) GCDAsyncUdpSocket *server_socket;
-@property (nonatomic,strong) KCSokcet *serverSocket;
-@property (nonatomic,strong) KCMavlinkIO *mavlink;
+@interface KCSokcet()
+
 @end
 
-@implementation KCViewController
-//@synthesize server_socket = _server_socket;
-@synthesize serverSocket = _serverSocket;
-@synthesize mavlink = _mavlink;
+@implementation KCSokcet
+//@synthesize clientAddress = _clientAddress;
 
--(GCDAsyncUdpSocket *)serverSocket
+#pragma mark - getter and setter
+
+//
+//- (NSString *)clientAddress
+//{
+//    if (!_clientAddress) {
+//        _clientAddress = [NSString string];
+//    }
+//    return _clientAddress;
+//}
+
+#pragma mark - init class
+
+- (KCSokcet *)init
 {
-    if (!_serverSocket) {
-        _serverSocket = [[KCSokcet alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    self = [super init];
+    return self;
+}
+
+- (BOOL)bindToServer
+{
+    BOOL isSuccess = 0;
+    NSError *error = nil;
+    if ([self bindToPort:SERVER_PORT error:&error]) {
+        isSuccess = 1;
+    }else{
+        
+        NSLog(@"bind to server has an error: %@",error);
     }
-    return _serverSocket;
+    return isSuccess;
 }
 
-- (KCMavlinkIO *)mavlink
+- (BOOL)bindToClient
 {
-    if (!_mavlink) {
-        _mavlink = [[KCMavlinkIO alloc] init];
+    BOOL isSuccess = 0;
+    NSError *error = nil;
+    if ([self bindToPort:CLIENT_PORT error:&error]) {
+        isSuccess = 1;
+    }else{
+        NSLog(@"bind to client has an error: %@",error);
     }
-    return _mavlink;
+    return isSuccess;
 }
 
-- (void)viewDidLoad
+- (BOOL)beginReceiving
 {
-    [super viewDidLoad];
-    [self.serverSocket bindToServer];
-    [self.serverSocket beginReceiving];
-}
-
-- (void)udpSocket:(GCDAsyncUdpSocket *)socket
-   didReceiveData:(NSData *)data
-      fromAddress:(NSData *)address
-withFilterContext:(id)filterContext
-{
-    mavlink_message_t msg;
-    self.mavlink = [[KCMavlinkIO alloc] initWithData:data into:&msg];
-    switch ([self.mavlink.msgid integerValue]) {
-        case 0:{
-            KCMavlinkHeartBeat *mavlinkHeartBeat = [[KCMavlinkHeartBeat alloc] initWith:&msg];
-            NSLog(@"%@",mavlinkHeartBeat.mavID);
-            break;
-        }
-        case 1:{
-            KCMavlinkSysStatus *mavlinkSysStatus = [[KCMavlinkSysStatus alloc] initWith:&msg];
-            NSLog(@"%@",mavlinkSysStatus.mavID);
-            break;
-        }
-        default:
-            break;
+    __block NSError *errPtr = nil;
+    __block BOOL result = [super beginReceiving:&errPtr];
+    if (errPtr) {
+        NSLog(@"beginReceiving has an error:%@",errPtr);
     }
+    return result;
 }
 
+//- (void)receiveDataFromCilent:(KCSokcet *)socket
+//{
+//    NSData *rawData = [[NSData alloc] init];
+//    NSData *addressData = [[NSData alloc] init];
+//    id filterContext;
+//    [self udpSocket:socket didReceiveData:rawData
+//        fromAddress:addressData
+//  withFilterContext:filterContext];
+//    
+//}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-//- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
+//- (void)udpSocket:(GCDAsyncUdpSocket *)socket
+//   didReceiveData:(NSData *)data
 //      fromAddress:(NSData *)address
 //withFilterContext:(id)filterContext
+//{
+//    self.rawData = data;
+//    [self processRawData];
+//    
+//}
+
+
+
+//- (void)processRawDataFromClient
 //{
 //    mavlink_message_t msg;
 //    mavlink_status_t status;
@@ -86,35 +103,27 @@ withFilterContext:(id)filterContext
 //    mavlink_local_position_ned_t local_position_ned;
 //    mavlink_attitude_t attitude;
 //    mavlink_global_position_int_t global_position_int_t;
-//
-//
-//    Byte *buf = (Byte *)[data bytes];
-//    NSInteger data_length = [data length];
-//    NSMutableString *addressString = [[NSMutableString alloc] initWithData:address encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",addressString);
-////    for (int i = 0; i < data_length; ++i) {
-////            printf("buf = %x\n",buf[i]);
-////            NSLog(@"%x",buf[i]);
-////            NSLog(@"%d",i);
-////    }
-////    *buf = [data bytes];
+//    
+//    Byte *buf = (Byte *)[self.rawData bytes];
+//    NSInteger rawDataLength = [self.rawData length];
+//    
 //    unsigned int temp = 0;
-//    for (int i = 0; i< data_length; ++i) {
-//        int parse_success;
-//        parse_success = mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status);
+//    for (int i = 0; i < rawDataLength; ++i) {
+//        int parseSuccess;
+//        parseSuccess = mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status);
 //        temp = buf[i];
-//        if (parse_success) {
+//        if (parseSuccess) {
 //            switch (msg.msgid){
 //                case 0:
-//
+//                    
 //                    NSLog(@" ***********Heart_Beat************");
 //                    NSLog(@"*       msg.msgid = %3d           *\n",msg.msgid);
 //                    NSLog(@"*       msg.seq = %3d             *\n",msg.seq);
 //                    NSLog(@"*       msg.compid = %3d          *\n",msg.sysid);
 //                    NSLog(@" *********************************\n");
 //                    break;
-//
-//
+//                    
+//                    
 //                case 1:
 //                    mavlink_msg_sys_status_decode(&msg,&sys_status);
 //                    NSLog(@" *********System_Status***********\n");
@@ -123,17 +132,17 @@ withFilterContext:(id)filterContext
 //                    NSLog(@"*       battery remaining = %3d   *\n",sys_status.battery_remaining);
 //                    NSLog(@" *********************************\n");
 //                    break;
-//
+//                    
 //                case 32:
 //                    mavlink_msg_local_position_ned_decode(&msg,&local_position_ned);
-//
+//                    
 //                    NSLog(@" *********Local_Position**********\n");
 //                    NSLog(@"*       X Position = %3f          *\n",local_position_ned.x);
 //                    NSLog(@"*       Y Position = %3f          *\n",local_position_ned.y);
 //                    NSLog(@"*       Z Position = %3f          *\n",local_position_ned.z);
 //                    NSLog(@" *********************************\n");
 //                    break;
-//
+//                    
 //                case 30:
 //                    mavlink_msg_attitude_decode(&msg, &attitude);
 //                    NSLog(@" *********Attitude****************\n");
@@ -142,10 +151,10 @@ withFilterContext:(id)filterContext
 //                    NSLog(@"*       yaw = %3f                 *\n",attitude.yaw);
 //                    NSLog(@" *********************************\n");
 //                    break;
-//
+//                    
 //                case 33:
 //                    mavlink_msg_global_position_int_decode(&msg,&global_position_int_t);
-//
+//                    
 //                    NSLog(@" *********Global_Position_Int******\n");
 //                    NSLog(@"*       time_boot_ms = %d           *\n",global_position_int_t.time_boot_ms);
 //                    NSLog(@"*       lat = %4d                   *\n",global_position_int_t.lat);
@@ -158,16 +167,15 @@ withFilterContext:(id)filterContext
 //                    /*
 //                     *mavlink_msg_global_position_int_decode();
 //                     */
-//
-//
+//                    
+//                    
 //                default:
 //                    NSLog(@"\n");
 //                    continue;
-//
+//                    
 //            }
-//
-//
 //        }
 //    }
 //}
+
 @end
