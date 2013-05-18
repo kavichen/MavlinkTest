@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A6A46D317470E020021DB7A /* KCMavlinkParamRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */; };
+		5A6A46D6174711810021DB7A /* KCMavlinkParamRequestRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D5174711810021DB7A /* KCMavlinkParamRequestRead.m */; };
+		5A6A46D91747176D0021DB7A /* KCMavlinkParamValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D81747176D0021DB7A /* KCMavlinkParamValue.m */; };
+		5A6A46DC17471CFB0021DB7A /* KCMavlinkParamSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46DB17471CFB0021DB7A /* KCMavlinkParamSet.m */; };
+		5A6A46DF17472BBC0021DB7A /* KCMavlinkCommandACK.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46DE17472BBC0021DB7A /* KCMavlinkCommandACK.m */; };
+		5A6A46E217472DD40021DB7A /* KCMavlinkMissionCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46E117472DD30021DB7A /* KCMavlinkMissionCount.m */; };
+		5A6A46E5174730440021DB7A /* KCMavlinkMissionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46E4174730430021DB7A /* KCMavlinkMissionRequest.m */; };
+		5A6A46E8174747A00021DB7A /* KCMavlinkMissionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46E7174747A00021DB7A /* KCMavlinkMissionItem.m */; };
+		5A6A46EB17474ECC0021DB7A /* KCMavlinkMissionACK.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46EA17474ECC0021DB7A /* KCMavlinkMissionACK.m */; };
+		5A6A46EE174751470021DB7A /* KCMavlinkMissionRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46ED174751460021DB7A /* KCMavlinkMissionRequestList.m */; };
+		5A6A46F1174752E50021DB7A /* KCMavlinkMissionClearAll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46F0174752E50021DB7A /* KCMavlinkMissionClearAll.m */; };
 		5A90B634172E09B600DEED7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B633172E09B600DEED7A /* UIKit.framework */; };
 		5A90B636172E09B600DEED7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B635172E09B600DEED7A /* Foundation.framework */; };
 		5A90B638172E09B600DEED7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B637172E09B600DEED7A /* CoreGraphics.framework */; };
@@ -29,6 +40,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A6A46D117470E020021DB7A /* KCMavlinkParamRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestList.h; sourceTree = "<group>"; };
+		5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkParamRequestList.m; sourceTree = "<group>"; };
+		5A6A46D4174711810021DB7A /* KCMavlinkParamRequestRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestRead.h; sourceTree = "<group>"; };
+		5A6A46D5174711810021DB7A /* KCMavlinkParamRequestRead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkParamRequestRead.m; sourceTree = "<group>"; };
+		5A6A46D71747176C0021DB7A /* KCMavlinkParamValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamValue.h; sourceTree = "<group>"; };
+		5A6A46D81747176D0021DB7A /* KCMavlinkParamValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkParamValue.m; sourceTree = "<group>"; };
+		5A6A46DA17471CFB0021DB7A /* KCMavlinkParamSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamSet.h; sourceTree = "<group>"; };
+		5A6A46DB17471CFB0021DB7A /* KCMavlinkParamSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkParamSet.m; sourceTree = "<group>"; };
+		5A6A46DD17472BBC0021DB7A /* KCMavlinkCommandACK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkCommandACK.h; sourceTree = "<group>"; };
+		5A6A46DE17472BBC0021DB7A /* KCMavlinkCommandACK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkCommandACK.m; sourceTree = "<group>"; };
+		5A6A46E017472DD30021DB7A /* KCMavlinkMissionCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionCount.h; sourceTree = "<group>"; };
+		5A6A46E117472DD30021DB7A /* KCMavlinkMissionCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionCount.m; sourceTree = "<group>"; };
+		5A6A46E3174730430021DB7A /* KCMavlinkMissionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionRequest.h; sourceTree = "<group>"; };
+		5A6A46E4174730430021DB7A /* KCMavlinkMissionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionRequest.m; sourceTree = "<group>"; };
+		5A6A46E61747479F0021DB7A /* KCMavlinkMissionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionItem.h; sourceTree = "<group>"; };
+		5A6A46E7174747A00021DB7A /* KCMavlinkMissionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionItem.m; sourceTree = "<group>"; };
+		5A6A46E917474ECB0021DB7A /* KCMavlinkMissionACK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionACK.h; sourceTree = "<group>"; };
+		5A6A46EA17474ECC0021DB7A /* KCMavlinkMissionACK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionACK.m; sourceTree = "<group>"; };
+		5A6A46EC174751460021DB7A /* KCMavlinkMissionRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionRequestList.h; sourceTree = "<group>"; };
+		5A6A46ED174751460021DB7A /* KCMavlinkMissionRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionRequestList.m; sourceTree = "<group>"; };
+		5A6A46EF174752E40021DB7A /* KCMavlinkMissionClearAll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionClearAll.h; sourceTree = "<group>"; };
+		5A6A46F0174752E50021DB7A /* KCMavlinkMissionClearAll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionClearAll.m; sourceTree = "<group>"; };
 		5A90B630172E09B600DEED7A /* MavlinkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A90B633172E09B600DEED7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5A90B635172E09B600DEED7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -530,6 +563,28 @@
 				5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */,
 				5A9693241746353C00F382C3 /* KCMavlinkSetMode.h */,
 				5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */,
+				5A6A46D117470E020021DB7A /* KCMavlinkParamRequestList.h */,
+				5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */,
+				5A6A46D4174711810021DB7A /* KCMavlinkParamRequestRead.h */,
+				5A6A46D5174711810021DB7A /* KCMavlinkParamRequestRead.m */,
+				5A6A46D71747176C0021DB7A /* KCMavlinkParamValue.h */,
+				5A6A46D81747176D0021DB7A /* KCMavlinkParamValue.m */,
+				5A6A46DA17471CFB0021DB7A /* KCMavlinkParamSet.h */,
+				5A6A46DB17471CFB0021DB7A /* KCMavlinkParamSet.m */,
+				5A6A46DD17472BBC0021DB7A /* KCMavlinkCommandACK.h */,
+				5A6A46DE17472BBC0021DB7A /* KCMavlinkCommandACK.m */,
+				5A6A46E017472DD30021DB7A /* KCMavlinkMissionCount.h */,
+				5A6A46E117472DD30021DB7A /* KCMavlinkMissionCount.m */,
+				5A6A46E3174730430021DB7A /* KCMavlinkMissionRequest.h */,
+				5A6A46E4174730430021DB7A /* KCMavlinkMissionRequest.m */,
+				5A6A46E61747479F0021DB7A /* KCMavlinkMissionItem.h */,
+				5A6A46E7174747A00021DB7A /* KCMavlinkMissionItem.m */,
+				5A6A46E917474ECB0021DB7A /* KCMavlinkMissionACK.h */,
+				5A6A46EA17474ECC0021DB7A /* KCMavlinkMissionACK.m */,
+				5A6A46EC174751460021DB7A /* KCMavlinkMissionRequestList.h */,
+				5A6A46ED174751460021DB7A /* KCMavlinkMissionRequestList.m */,
+				5A6A46EF174752E40021DB7A /* KCMavlinkMissionClearAll.h */,
+				5A6A46F0174752E50021DB7A /* KCMavlinkMissionClearAll.m */,
 			);
 			name = ObjMavlink;
 			sourceTree = "<group>";
@@ -628,6 +683,17 @@
 				5A96931F1746130900F382C3 /* KCMavlinkSysStatus.m in Sources */,
 				5A96932317462F4A00F382C3 /* KCMavlinkSystemTime.m in Sources */,
 				5A9693261746353D00F382C3 /* KCMavlinkSetMode.m in Sources */,
+				5A6A46D317470E020021DB7A /* KCMavlinkParamRequestList.m in Sources */,
+				5A6A46D6174711810021DB7A /* KCMavlinkParamRequestRead.m in Sources */,
+				5A6A46D91747176D0021DB7A /* KCMavlinkParamValue.m in Sources */,
+				5A6A46DC17471CFB0021DB7A /* KCMavlinkParamSet.m in Sources */,
+				5A6A46DF17472BBC0021DB7A /* KCMavlinkCommandACK.m in Sources */,
+				5A6A46E217472DD40021DB7A /* KCMavlinkMissionCount.m in Sources */,
+				5A6A46E5174730440021DB7A /* KCMavlinkMissionRequest.m in Sources */,
+				5A6A46E8174747A00021DB7A /* KCMavlinkMissionItem.m in Sources */,
+				5A6A46EB17474ECC0021DB7A /* KCMavlinkMissionACK.m in Sources */,
+				5A6A46EE174751470021DB7A /* KCMavlinkMissionRequestList.m in Sources */,
+				5A6A46F1174752E50021DB7A /* KCMavlinkMissionClearAll.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
