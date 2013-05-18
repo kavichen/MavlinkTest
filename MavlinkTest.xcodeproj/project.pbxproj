@@ -18,6 +18,10 @@
 		5A6A46EB17474ECC0021DB7A /* KCMavlinkMissionACK.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46EA17474ECC0021DB7A /* KCMavlinkMissionACK.m */; };
 		5A6A46EE174751470021DB7A /* KCMavlinkMissionRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46ED174751460021DB7A /* KCMavlinkMissionRequestList.m */; };
 		5A6A46F1174752E50021DB7A /* KCMavlinkMissionClearAll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46F0174752E50021DB7A /* KCMavlinkMissionClearAll.m */; };
+		5A6A46F4174754DE0021DB7A /* KCMavlinkGlobalPositionInt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46F3174754DD0021DB7A /* KCMavlinkGlobalPositionInt.m */; };
+		5A6A46F7174759D10021DB7A /* KCMavlinkAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46F6174759D00021DB7A /* KCMavlinkAttitude.m */; };
+		5A6A46FD17475D160021DB7A /* KCMavlinkRawIMU.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46FC17475D0B0021DB7A /* KCMavlinkRawIMU.m */; };
+		5A6A4700174761E70021DB7A /* KCMavlinkCommandLong.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46FF174761E60021DB7A /* KCMavlinkCommandLong.m */; };
 		5A90B634172E09B600DEED7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B633172E09B600DEED7A /* UIKit.framework */; };
 		5A90B636172E09B600DEED7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B635172E09B600DEED7A /* Foundation.framework */; };
 		5A90B638172E09B600DEED7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B637172E09B600DEED7A /* CoreGraphics.framework */; };
@@ -62,6 +66,14 @@
 		5A6A46ED174751460021DB7A /* KCMavlinkMissionRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionRequestList.m; sourceTree = "<group>"; };
 		5A6A46EF174752E40021DB7A /* KCMavlinkMissionClearAll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMissionClearAll.h; sourceTree = "<group>"; };
 		5A6A46F0174752E50021DB7A /* KCMavlinkMissionClearAll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMissionClearAll.m; sourceTree = "<group>"; };
+		5A6A46F2174754DC0021DB7A /* KCMavlinkGlobalPositionInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkGlobalPositionInt.h; sourceTree = "<group>"; };
+		5A6A46F3174754DD0021DB7A /* KCMavlinkGlobalPositionInt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkGlobalPositionInt.m; sourceTree = "<group>"; };
+		5A6A46F5174759CE0021DB7A /* KCMavlinkAttitude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkAttitude.h; sourceTree = "<group>"; };
+		5A6A46F6174759D00021DB7A /* KCMavlinkAttitude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkAttitude.m; sourceTree = "<group>"; };
+		5A6A46FB17475D070021DB7A /* KCMavlinkRawIMU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkRawIMU.h; sourceTree = "<group>"; };
+		5A6A46FC17475D0B0021DB7A /* KCMavlinkRawIMU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkRawIMU.m; sourceTree = "<group>"; };
+		5A6A46FE174761E40021DB7A /* KCMavlinkCommandLong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkCommandLong.h; sourceTree = "<group>"; };
+		5A6A46FF174761E60021DB7A /* KCMavlinkCommandLong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkCommandLong.m; sourceTree = "<group>"; };
 		5A90B630172E09B600DEED7A /* MavlinkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A90B633172E09B600DEED7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5A90B635172E09B600DEED7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -585,6 +597,14 @@
 				5A6A46ED174751460021DB7A /* KCMavlinkMissionRequestList.m */,
 				5A6A46EF174752E40021DB7A /* KCMavlinkMissionClearAll.h */,
 				5A6A46F0174752E50021DB7A /* KCMavlinkMissionClearAll.m */,
+				5A6A46F2174754DC0021DB7A /* KCMavlinkGlobalPositionInt.h */,
+				5A6A46F3174754DD0021DB7A /* KCMavlinkGlobalPositionInt.m */,
+				5A6A46F5174759CE0021DB7A /* KCMavlinkAttitude.h */,
+				5A6A46F6174759D00021DB7A /* KCMavlinkAttitude.m */,
+				5A6A46FB17475D070021DB7A /* KCMavlinkRawIMU.h */,
+				5A6A46FC17475D0B0021DB7A /* KCMavlinkRawIMU.m */,
+				5A6A46FE174761E40021DB7A /* KCMavlinkCommandLong.h */,
+				5A6A46FF174761E60021DB7A /* KCMavlinkCommandLong.m */,
 			);
 			name = ObjMavlink;
 			sourceTree = "<group>";
@@ -694,6 +714,10 @@
 				5A6A46EB17474ECC0021DB7A /* KCMavlinkMissionACK.m in Sources */,
 				5A6A46EE174751470021DB7A /* KCMavlinkMissionRequestList.m in Sources */,
 				5A6A46F1174752E50021DB7A /* KCMavlinkMissionClearAll.m in Sources */,
+				5A6A46F4174754DE0021DB7A /* KCMavlinkGlobalPositionInt.m in Sources */,
+				5A6A46F7174759D10021DB7A /* KCMavlinkAttitude.m in Sources */,
+				5A6A46FD17475D160021DB7A /* KCMavlinkRawIMU.m in Sources */,
+				5A6A4700174761E70021DB7A /* KCMavlinkCommandLong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
