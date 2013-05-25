@@ -16,8 +16,8 @@
 }
 
 - (KCSokcet *)init;
+- (BOOL)bindToLocal;
 - (BOOL)bindToServer;
-- (BOOL)bindToClient;
 - (BOOL)beginReceiving;
 //- (NSData *)returnRawData;
 //- (void)processRawData;

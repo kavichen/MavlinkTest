@@ -8,8 +8,8 @@
 
 #import "KCSokcet.h"
 #import "mavlink.h"
-#define SERVER_PORT 14550
-#define CLIENT_PORT 14551
+#define LOCAL_PORT 14550
+#define SERVER_PORT 14551
 
 @interface KCSokcet()
 
@@ -37,11 +37,11 @@
     return self;
 }
 
-- (BOOL)bindToServer
+- (BOOL)bindToLocal
 {
     BOOL isSuccess = 0;
     NSError *error = nil;
-    if ([self bindToPort:SERVER_PORT error:&error]) {
+    if ([self bindToPort:LOCAL_PORT error:&error]) {
         isSuccess = 1;
     }else{
         
@@ -50,11 +50,11 @@
     return isSuccess;
 }
 
-- (BOOL)bindToClient
+- (BOOL)bindToServer
 {
     BOOL isSuccess = 0;
     NSError *error = nil;
-    if ([self bindToPort:CLIENT_PORT error:&error]) {
+    if ([self bindToPort:LOCAL_PORT error:&error]) {
         isSuccess = 1;
     }else{
         NSLog(@"bind to client has an error: %@",error);

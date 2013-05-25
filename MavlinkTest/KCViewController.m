@@ -12,23 +12,43 @@
 #import "KCSokcet.h"
 #define CLIENT_IP @"127.0.0.1"
 
+#ifndef BUFFER_LENGTH
+#define BUFFER_LENGTH 2041
+#endif
+
 @interface KCViewController ()
 //@property (nonatomic,strong) GCDAsyncUdpSocket *server_socket;
+//@property (strong, nonatomic) IBOutlet UIButton *heartBeat;
+@property (nonatomic,strong) KCSokcet *localSocket;
 @property (nonatomic,strong) KCSokcet *serverSocket;
 @property (nonatomic,strong) KCMavlinkIO *mavlink;
+@property (nonatomic,strong) NSString *address;
+@property int port;
+@property (nonatomic,strong) NSData *sendData;
 @end
 
 @implementation KCViewController
 //@synthesize server_socket = _server_socket;
+
+@synthesize localSocket = _localSocket;
 @synthesize serverSocket = _serverSocket;
 @synthesize mavlink = _mavlink;
+@synthesize address = _address;
+@synthesize sendData = _sendData;
 
 -(GCDAsyncUdpSocket *)serverSocket
 {
-    if (!_serverSocket) {
+    if(!_serverSocket) {
         _serverSocket = [[KCSokcet alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     }
     return _serverSocket;
+}
+-(GCDAsyncUdpSocket *)localSocket
+{
+    if (!_localSocket) {
+        _localSocket = [[KCSokcet alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    }
+    return _localSocket;
 }
 
 - (KCMavlinkIO *)mavlink
@@ -42,8 +62,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.serverSocket bindToServer];
-    [self.serverSocket beginReceiving];
+    [self.localSocket bindToServer];
+    [self.localSocket beginReceiving];
+    
+    self.address = @"127.0.0.1";
+    self.port = 14550;
+//    long tag = 0;
+//    NSData *sendData;
+
+//    unsigned char buf[2031];
+//    NSInteger len = mavlink_msg_to_send_buffer(buf, &msg);
+//    NSData *sendData = [NSData dataWithBytesNoCopy:buf length:len];
+//    [self.serverSocket sendData:sendData toHost:self.address port:self.port withTimeout:-1 tag:tag];
+//    free(buf);
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)socket
@@ -56,12 +87,15 @@ withFilterContext:(id)filterContext
     switch ([self.mavlink.msgid integerValue]) {
         case 0:{
             KCMavlinkHeartBeat *mavlinkHeartBeat = [[KCMavlinkHeartBeat alloc] initWith:&msg];
-            NSLog(@"%@",mavlinkHeartBeat.mavID);
+            NSLog(@"----------------");
+            NSLog(@"%@ = HeartBeat",mavlinkHeartBeat.mavID);
+            NSLog(@"Version = %hhu",[mavlinkHeartBeat.mavlinkVersion unsignedCharValue]);
             break;
         }
         case 1:{
             KCMavlinkSysStatus *mavlinkSysStatus = [[KCMavlinkSysStatus alloc] initWith:&msg];
-            NSLog(@"%@",mavlinkSysStatus.mavID);
+            NSLog(@"----------------");
+            NSLog(@"%@ = System Status",mavlinkSysStatus.mavID);
             break;
         }
         default:
@@ -69,12 +103,35 @@ withFilterContext:(id)filterContext
     }
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)sendHeartBeat:(id)sender
+{
+    long tag = 0;
+    mavlink_message_t msg;
+    mavlink_msg_heartbeat_pack(1, 200, &msg, MAV_TYPE_HELICOPTER, MAV_AUTOPILOT_GENERIC, MAV_MODE_GUIDED_ARMED, 0, MAV_STATE_ACTIVE);
+    unsigned char *buf;
+//    buf = (unsigned char *)malloc(sizeof(unsigned char)*2041);
+    buf = (unsigned char *)malloc(8 * 2041);
+    memset(buf, 0, 2041);
+    NSInteger len = mavlink_msg_to_send_buffer(buf, &msg);
+    NSLog(@"length = %d",len);
+    NSData *sendData = [NSData dataWithBytesNoCopy:buf length:2041];
+    [self.serverSocket sendData:sendData toHost:self.address port:self.port withTimeout:-1 tag:tag];
+    free(buf);
+    buf = NULL;
+}
+
+- (IBAction)sendStartComm:(UIButton *)sender
+{
+    long tag = 0;
+    mavlink_message_t msg;
+    mavlink_msg_command_long_pack(<#uint8_t system_id#>, <#uint8_t component_id#>, <#mavlink_message_t *msg#>, <#uint8_t target_system#>, <#uint8_t target_component#>, <#uint16_t command#>, <#uint8_t confirmation#>, <#float param1#>, <#float param2#>, <#float param3#>, <#float param4#>, <#float param5#>, <#float param6#>, <#float param7#>);
+
 
 //- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
 //      fromAddress:(NSData *)address
@@ -170,4 +227,7 @@ withFilterContext:(id)filterContext
 //        }
 //    }
 //}
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 @end

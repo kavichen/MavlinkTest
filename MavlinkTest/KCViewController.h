@@ -11,7 +11,7 @@
 #import "GCDAsyncUdpSocket.h"
 #import "KCMavlinkHeartBeat.h"
 #import "KCMavlinkSysStatus.h"
-
+#import "KCMavlinkCommandLong.h"
 
 
 
