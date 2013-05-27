@@ -54,7 +54,7 @@
 {
     BOOL isSuccess = 0;
     NSError *error = nil;
-    if ([self bindToPort:LOCAL_PORT error:&error]) {
+    if ([self bindToPort:SERVER_PORT error:&error]) {
         isSuccess = 1;
     }else{
         NSLog(@"bind to client has an error: %@",error);
