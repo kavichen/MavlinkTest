@@ -187,7 +187,7 @@ withFilterContext:(id)filterContext
             NSNumber *hdg = [[NSNumber alloc] initWithUnsignedInt:mavlinkGlabalPosition.hdg/100];
             NSNumber *lat = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lat];
             NSNumber *lon = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lon];
-            /**/
+            /*testing*/
             self.hdgRealData.text = [hdg stringValue];
         }
         default:
