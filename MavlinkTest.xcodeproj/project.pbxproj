@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A372B8717B5D372009F3DDD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A372B8617B5D372009F3DDD /* CoreLocation.framework */; };
 		5A6A46D317470E020021DB7A /* KCMavlinkParamRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */; };
 		5A6A46D6174711810021DB7A /* KCMavlinkParamRequestRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D5174711810021DB7A /* KCMavlinkParamRequestRead.m */; };
 		5A6A46D91747176D0021DB7A /* KCMavlinkParamValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D81747176D0021DB7A /* KCMavlinkParamValue.m */; };
@@ -39,11 +40,13 @@
 		5A96931F1746130900F382C3 /* KCMavlinkSysStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A96931E1746130900F382C3 /* KCMavlinkSysStatus.m */; };
 		5A96932317462F4A00F382C3 /* KCMavlinkSystemTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */; };
 		5A9693261746353D00F382C3 /* KCMavlinkSetMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */; };
+		5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */; };
 		5ADC03E0173798E6004A9ACC /* KCMavlinkIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */; };
 		5ADC03E31737A623004A9ACC /* KCSokcet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03E21737A622004A9ACC /* KCSokcet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A372B8617B5D372009F3DDD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5A6A46D117470E020021DB7A /* KCMavlinkParamRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestList.h; sourceTree = "<group>"; };
 		5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkParamRequestList.m; sourceTree = "<group>"; };
 		5A6A46D4174711810021DB7A /* KCMavlinkParamRequestRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestRead.h; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 		5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkSystemTime.m; sourceTree = "<group>"; };
 		5A9693241746353C00F382C3 /* KCMavlinkSetMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkSetMode.h; sourceTree = "<group>"; };
 		5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkSetMode.m; sourceTree = "<group>"; };
+		5AAE5F87178FDAB0002C6C0D /* KCMavlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMessage.h; sourceTree = "<group>"; };
+		5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMessage.m; sourceTree = "<group>"; };
 		5ADC03DE173798E6004A9ACC /* KCMavlinkIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkIO.h; sourceTree = "<group>"; };
 		5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkIO.m; sourceTree = "<group>"; };
 		5ADC03E11737A622004A9ACC /* KCSokcet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSokcet.h; sourceTree = "<group>"; };
@@ -269,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A372B8717B5D372009F3DDD /* CoreLocation.framework in Frameworks */,
 				5A90B700172E202C00DEED7A /* CFNetwork.framework in Frameworks */,
 				5A90B634172E09B600DEED7A /* UIKit.framework in Frameworks */,
 				5A90B636172E09B600DEED7A /* Foundation.framework in Frameworks */,
@@ -282,6 +288,7 @@
 		5A90B627172E09B600DEED7A = {
 			isa = PBXGroup;
 			children = (
+				5A372B8617B5D372009F3DDD /* CoreLocation.framework */,
 				5A90B6FF172E202C00DEED7A /* CFNetwork.framework */,
 				5A90B639172E09B600DEED7A /* MavlinkTest */,
 				5A90B632172E09B600DEED7A /* Frameworks */,
@@ -605,6 +612,8 @@
 				5A6A46FC17475D0B0021DB7A /* KCMavlinkRawIMU.m */,
 				5A6A46FE174761E40021DB7A /* KCMavlinkCommandLong.h */,
 				5A6A46FF174761E60021DB7A /* KCMavlinkCommandLong.m */,
+				5AAE5F87178FDAB0002C6C0D /* KCMavlinkMessage.h */,
+				5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */,
 			);
 			name = ObjMavlink;
 			sourceTree = "<group>";
@@ -718,6 +727,7 @@
 				5A6A46F7174759D10021DB7A /* KCMavlinkAttitude.m in Sources */,
 				5A6A46FD17475D160021DB7A /* KCMavlinkRawIMU.m in Sources */,
 				5A6A4700174761E70021DB7A /* KCMavlinkCommandLong.m in Sources */,
+				5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,13 +818,15 @@
 		5A90B654172E09B600DEED7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MavlinkTest/MavlinkTest-Prefix.pch";
 				INFOPLIST_FILE = "MavlinkTest/MavlinkTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -823,13 +835,15 @@
 		5A90B655172E09B600DEED7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MavlinkTest/MavlinkTest-Prefix.pch";
 				INFOPLIST_FILE = "MavlinkTest/MavlinkTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

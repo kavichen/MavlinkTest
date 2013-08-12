@@ -9,7 +9,7 @@
 #import "KCSokcet.h"
 #import "mavlink.h"
 #define LOCAL_PORT 14550
-#define SERVER_PORT 14551
+#define SERVER_PORT 14550
 
 @interface KCSokcet()
 

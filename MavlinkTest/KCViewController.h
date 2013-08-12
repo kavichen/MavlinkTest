@@ -12,13 +12,12 @@
 #import "KCMavlinkHeartBeat.h"
 #import "KCMavlinkSysStatus.h"
 #import "KCMavlinkCommandLong.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 
-@interface KCViewController : UIViewController<NSXMLParserDelegate> {
-    
+@interface KCViewController : UIViewController<NSXMLParserDelegate,CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
 }
-
-
 
 @end

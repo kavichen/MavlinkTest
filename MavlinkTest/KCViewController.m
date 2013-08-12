@@ -19,6 +19,14 @@
 @interface KCViewController (){
     unsigned char buf[BUFFER_LENGTH];
     NSInteger len;
+    int port;
+    NSInteger isSendHB;
+    NSInteger isSendStart;
+    KCMavlinkIO *mavlinkIO;
+    NSInteger targetSysID;
+    NSInteger targetCompID;
+    NSNumber *thisSystemID;
+    NSNumber *thisComponentID;
 }
 //@property (nonatomic,strong) GCDAsyncUdpSocket *server_socket;
 //@property (strong, nonatomic) IBOutlet UIButton *heartBeat;
@@ -26,8 +34,20 @@
 @property (nonatomic,strong) KCSokcet *serverSocket;
 @property (nonatomic,strong) KCMavlinkIO *mavlink;
 @property (nonatomic,strong) NSString *address;
-@property int port;
+//@property int port;
 @property (nonatomic,strong) NSData *sendData;
+@property (nonatomic,strong) KCMavlinkHeartBeat *heartBeat;
+@property (nonatomic,strong) NSNumber *thisSystemID;
+@property (nonatomic,strong) NSNumber *thisComponentID;
+@property (strong, nonatomic) IBOutlet UILabel *heartBeatRealData;
+@property (strong, nonatomic) IBOutlet UILabel *hdgRealData;
+@property (strong, nonatomic) IBOutlet UILabel *iPhoneHDGLabel;
+@property (strong, nonatomic) IBOutlet UILabel *iPhoneHDGLabel2;
+
+@property (strong, nonatomic) IBOutlet UILabel *iPhoneLonLabel;
+@property (strong, nonatomic) IBOutlet UILabel *iPhoneLatLabel;
+
+@property (strong,nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation KCViewController
@@ -38,6 +58,10 @@
 @synthesize mavlink = _mavlink;
 @synthesize address = _address;
 @synthesize sendData = _sendData;
+@synthesize heartBeat = _heartBeat;
+@synthesize thisSystemID = _thisSystemID;
+@synthesize thisComponentID = _thisComponentID;
+@synthesize locationManager = _locationManager;
 
 -(GCDAsyncUdpSocket *)serverSocket
 {
@@ -62,57 +86,113 @@
     return _mavlink;
 }
 
+- (NSNumber *)thisSystemID
+{
+    if (!_thisSystemID) {
+        _thisSystemID = [[NSNumber alloc] initWithUnsignedShort:0];
+    }
+    return _thisSystemID;
+}
+
+- (NSNumber *)thisComponentID
+{
+    if(!_thisComponentID) {
+        _thisComponentID = [[NSNumber alloc] initWithUnsignedShort:0];
+    }
+    return _thisComponentID;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.localSocket bindToServer];
     [self.localSocket beginReceiving];
-    
-    
-    self.address = @"127.0.0.1";
-    self.port = 14551;
-    
+    isSendHB = 0;
+    self.address = @"192.168.1.223";
+    port = 14550;
     memset(buf, 0, BUFFER_LENGTH);
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = 0.1;
+    locationManager.headingFilter = 1;
     
-    [NSThread detachNewThreadSelector:@selector(loopHeartBeat) toTarget:self withObject:nil];
-    NSThread *heartBeatThread = [[NSThread alloc] initWithTarget:self selector:@selector(loopHeartBeat) object:nil];
-    [heartBeatThread start];
+    [locationManager startUpdatingLocation];
+    [locationManager startUpdatingHeading];
+}
+/* location */
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLLocationCoordinate2D loc = [newLocation coordinate];
+//    float longitude = loc.longitude;
+//    float latitude = loc.latitude;
+    NSNumber *longitude =[[NSNumber alloc] initWithFloat:loc.longitude];
+    self.iPhoneLonLabel.text = [longitude stringValue];
+    NSNumber *latitude = [[NSNumber alloc] initWithFloat:loc.latitude];
+    self.iPhoneLatLabel.text = [latitude stringValue];
     
-//    long tag = 0;
-//    NSData *sendData;
-
-//    unsigned char buf[2031];
-//    NSInteger len = mavlink_msg_to_send_buffer(buf, &msg);
-//    NSData *sendData = [NSData dataWithBytesNoCopy:buf length:len];
-//    [self.serverSocket sendData:sendData toHost:self.address port:self.port withTimeout:-1 tag:tag];
-//    free(buf);
+//    CLLocationDirection hdgTrue = [new]
 }
 
-//- (void)udpSocket:(GCDAsyncUdpSocket *)socket
-//   didReceiveData:(NSData *)data
-//      fromAddress:(NSData *)address
-//withFilterContext:(id)filterContext
-//{
-//    mavlink_message_t msg;
-//    self.mavlink = [[KCMavlinkIO alloc] initWithData:data into:&msg];
-//    switch ([self.mavlink.msgid integerValue]) {
-//        case 0:{
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    CLLocationDirection iPhonetureHDG = [newHeading trueHeading];
+    CLLocationDirection iPhoneMagHDG = [newHeading magneticHeading];
+    NSNumber *tureHDG = [[NSNumber alloc] initWithFloat:iPhonetureHDG];
+    NSNumber *magHDG = [[NSNumber alloc] initWithFloat:iPhoneMagHDG];
+    
+    self.iPhoneHDGLabel.text = [tureHDG stringValue];
+    self.iPhoneHDGLabel2.text = [magHDG stringValue];
+}
+
+    
+- (void)udpSocket:(GCDAsyncUdpSocket *)socket
+   didReceiveData:(NSData *)data
+      fromAddress:(NSData *)address
+withFilterContext:(id)filterContext
+{
+    mavlink_message_t msg;
+    mavlinkIO = [[KCMavlinkIO alloc] initWithData:data into:&msg];
+    switch ([mavlinkIO.msgid integerValue]) {
+        case 0:{
+            self.heartBeat = [[KCMavlinkHeartBeat alloc] initWith:&msg];
+            self.heartBeatRealData.text = @"heart beat";
+//            self.heartBeatRealData.text = @"";
+            targetSysID = [mavlinkIO.sysid integerValue];
+            targetCompID = [mavlinkIO.compid integerValue];
+//            NSLog(@"targetSysID = %d", targetSysID);
+//            NSLog(@"targetCompID = %d", targetCompID);
 //            KCMavlinkHeartBeat *mavlinkHeartBeat = [[KCMavlinkHeartBeat alloc] initWith:&msg];
 //            NSLog(@"----------------");
-//            NSLog(@"%@ = HeartBeat",mavlinkHeartBeat.mavID);
-//            NSLog(@"Version = %hhu",[mavlinkHeartBeat.mavlinkVersion unsignedCharValue]);
-//            break;
-//        }
-//        case 1:{
-//            KCMavlinkSysStatus *mavlinkSysStatus = [[KCMavlinkSysStatus alloc] initWith:&msg];
+//            NSLog(@"Receive a HeartBeat");
+//            NSLog(@"customMode = %u",[self.heartBeat.customMode unsignedIntegerValue]);
+//            NSLog(@"type = %hhu",[self.heartBeat.type unsignedCharValue]);
+//            NSLog(@"autopilot = %hhu",[self.heartBeat.autopilot unsignedCharValue]);
+//            NSLog(@"base mode = %hhu",[self.heartBeat.baseMode unsignedCharValue]);
+//            NSLog(@"system status = %hhu",[self.heartBeat.systemStatus unsignedCharValue]);
+//            NSLog(@"MAVLink Version = %hhu",[self.heartBeat.mavlinkVersion unsignedCharValue]);
+            break;
+        }
+        case 1:{
+            KCMavlinkSysStatus *mavlinkSysStatus = [[KCMavlinkSysStatus alloc] initWith:&msg];
 //            NSLog(@"----------------");
-//            NSLog(@"%@ = System Status",mavlinkSysStatus.mavID);
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//}
+//            NSLog(@"System Status = %@",mavlinkSysStatus.mavID);
+            break;
+        }
+        case 33:{
+//            self.realData.text = 0;
+            self.heartBeatRealData.text = @"";
+            mavlink_global_position_int_t mavlinkGlabalPosition;
+            mavlink_msg_global_position_int_decode(&msg, &mavlinkGlabalPosition);
+            NSNumber *hdg = [[NSNumber alloc] initWithUnsignedInt:mavlinkGlabalPosition.hdg/100];
+            NSNumber *lat = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lat];
+            NSNumber *lon = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lon];
+            self.hdgRealData.text = [hdg stringValue];
+        }
+        default:
+            break;
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -120,136 +200,104 @@
     // Dispose of any resources that can be recreated.
 }
 
+/* Send HeartBeat Command */
+
 - (IBAction)sendHeartBeat:(id)sender
 {
-    long tag = 0;
-    mavlink_message_t msg;
-    mavlink_msg_heartbeat_pack(1, 200, &msg, MAV_TYPE_FIXED_WING, MAV_AUTOPILOT_GENERIC, MAV_MODE_GUIDED_ARMED, 0, MAV_STATE_ACTIVE);
-//    unsigned char *buf;
-//    buf = (unsigned char *)malloc(sizeof(unsigned char)*2041);
-    len = mavlink_msg_to_send_buffer(buf, &msg);
-    NSLog(@"length = %d",len);
-    self.sendData = [NSData dataWithBytes:buf length:len];
-//    memset(buf, 0, 2041);
-    [self.serverSocket sendData:self.sendData toHost:self.address port:self.port withTimeout:-1 tag:tag];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if (isSendHB == 0 ) {
+            isSendHB = 1;
+            [self performSelectorInBackground:@selector(loopHeartBeat) withObject:NULL];
+        }else{
+            isSendHB = 0;
+        }
+        
+    });
 }
 
 - (void)loopHeartBeat
 {
-    long tag = 0;
-    mavlink_message_t msg;
-    mavlink_msg_heartbeat_pack(1, 200, &msg, MAV_TYPE_FIXED_WING, MAV_AUTOPILOT_GENERIC, MAV_MODE_GUIDED_ARMED, 0, MAV_STATE_ACTIVE);
-    //    unsigned char *buf;
-    //    buf = (unsigned char *)malloc(sizeof(unsigned char)*2041);
-    len = mavlink_msg_to_send_buffer(buf, &msg);
-    NSLog(@"length = %d",len);
-    self.sendData = [NSData dataWithBytes:buf length:len];
-//    memset(buf, 0, 2041);
-    [self.serverSocket sendData:self.sendData toHost:self.address port:self.port withTimeout:-1 tag:tag];
+    while (isSendHB == 1) {
+        long tag = 0;
+        mavlink_message_t msg;
+        mavlink_msg_heartbeat_pack(1, 200, &msg, MAV_TYPE_FIXED_WING, MAV_AUTOPILOT_GENERIC, MAV_MODE_GUIDED_ARMED, 0, MAV_STATE_ACTIVE);
+        //    unsigned char *buf;
+        //    buf = (unsigned char *)malloc(sizeof(unsigned char)*2041);
+        len = mavlink_msg_to_send_buffer(buf, &msg);
+        NSLog(@"Send a HeartBeat");
+        self.sendData = [NSData dataWithBytes:buf length:len];
+        [self.serverSocket sendData:self.sendData toHost:self.address port:port withTimeout:-1 tag:tag];
+        sleep(1);
+        
+    }
+
 }
 
-//- (IBAction)sendStartComm:(UIButton *)sender
-//{
-//    long tag = 0;
-//    mavlink_message_t msg;
-//    mavlink_msg_command_long_pack(<#uint8_t system_id#>, <#uint8_t component_id#>, <#mavlink_message_t *msg#>, <#uint8_t target_system#>, <#uint8_t target_component#>, <#uint16_t command#>, <#uint8_t confirmation#>, <#float param1#>, <#float param2#>, <#float param3#>, <#float param4#>, <#float param5#>, <#float param6#>, <#float param7#>);
-//
-//}
-//- (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
-//      fromAddress:(NSData *)address
-//withFilterContext:(id)filterContext
-//{
-//    mavlink_message_t msg;
-//    mavlink_status_t status;
-//    mavlink_sys_status_t sys_status;
-//    mavlink_local_position_ned_t local_position_ned;
-//    mavlink_attitude_t attitude;
-//    mavlink_global_position_int_t global_position_int_t;
-//
-//
-//    Byte *buf = (Byte *)[data bytes];
-//    NSInteger data_length = [data length];
-//    NSMutableString *addressString = [[NSMutableString alloc] initWithData:address encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",addressString);
-////    for (int i = 0; i < data_length; ++i) {
-////            printf("buf = %x\n",buf[i]);
-////            NSLog(@"%x",buf[i]);
-////            NSLog(@"%d",i);
-////    }
-////    *buf = [data bytes];
-//    unsigned int temp = 0;
-//    for (int i = 0; i< data_length; ++i) {
-//        int parse_success;
-//        parse_success = mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status);
-//        temp = buf[i];
-//        if (parse_success) {
-//            switch (msg.msgid){
-//                case 0:
-//
-//                    NSLog(@" ***********Heart_Beat************");
-//                    NSLog(@"*       msg.msgid = %3d           *\n",msg.msgid);
-//                    NSLog(@"*       msg.seq = %3d             *\n",msg.seq);
-//                    NSLog(@"*       msg.compid = %3d          *\n",msg.sysid);
-//                    NSLog(@" *********************************\n");
-//                    break;
-//
-//
-//                case 1:
-//                    mavlink_msg_sys_status_decode(&msg,&sys_status);
-//                    NSLog(@" *********System_Status***********\n");
-//                    NSLog(@"*       battery voltage = %5d   *\n",sys_status.voltage_battery);
-//                    NSLog(@"*       battery current = %3d     *\n",sys_status.current_battery);
-//                    NSLog(@"*       battery remaining = %3d   *\n",sys_status.battery_remaining);
-//                    NSLog(@" *********************************\n");
-//                    break;
-//
-//                case 32:
-//                    mavlink_msg_local_position_ned_decode(&msg,&local_position_ned);
-//
-//                    NSLog(@" *********Local_Position**********\n");
-//                    NSLog(@"*       X Position = %3f          *\n",local_position_ned.x);
-//                    NSLog(@"*       Y Position = %3f          *\n",local_position_ned.y);
-//                    NSLog(@"*       Z Position = %3f          *\n",local_position_ned.z);
-//                    NSLog(@" *********************************\n");
-//                    break;
-//
-//                case 30:
-//                    mavlink_msg_attitude_decode(&msg, &attitude);
-//                    NSLog(@" *********Attitude****************\n");
-//                    NSLog(@"*       roll = %3f                *\n",attitude.roll);
-//                    NSLog(@"*       pitch = %3f               *\n",attitude.pitch);
-//                    NSLog(@"*       yaw = %3f                 *\n",attitude.yaw);
-//                    NSLog(@" *********************************\n");
-//                    break;
-//
-//                case 33:
-//                    mavlink_msg_global_position_int_decode(&msg,&global_position_int_t);
-//
-//                    NSLog(@" *********Global_Position_Int******\n");
-//                    NSLog(@"*       time_boot_ms = %d           *\n",global_position_int_t.time_boot_ms);
-//                    NSLog(@"*       lat = %4d                   *\n",global_position_int_t.lat);
-//                    NSLog(@"*       lon = %4d                   *\n",global_position_int_t.lon);
-//                    NSLog(@"*       alt = %4d                   *\n",global_position_int_t.alt);
-//                    NSLog(@"*       hdg = %4d                   *\n",global_position_int_t.hdg);
-//                    NSLog(@" *********************************\n");
-//                    break;
-//                    // case 34:
-//                    /*
-//                     *mavlink_msg_global_position_int_decode();
-//                     */
-//
-//
-//                default:
-//                    NSLog(@"\n");
-//                    continue;
-//
-//            }
-//
-//
-//        }
-//    }
-//}
+
+/* Send Start Command */
+- (IBAction)sendStartComm:(UIButton *)sender
+{
+    long tag = 0;
+    mavlink_message_t msg;
+    mavlink_msg_command_long_pack(1, 200, &msg, targetSysID, targetCompID, MAV_CMD_NAV_TAKEOFF, 0, 0, 0, 0, 0, 0, 0, 0);
+//    KCMavlinkCommandLong *commandLong;
+//    NSNumber *cmd = [[NSNumber alloc] initWithUnsignedShort:MAV_CMD_NAV_TAKEOFF];
+//    [commandLong packCommandLongMsg:self.mavlink fromSystemID:self.thisSystemID fromComponentID:self.thisSystemID Command:cmd Confirmation:0 Param1:0 Param2:0 Param3:0 Param4:0 Param5:0 Param6:0 Param7:0 intoMessage:0];
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    NSLog(@"len = %d",len);
+    NSLog(@"Send TAKEOFF");
+    self.sendData = [NSData dataWithBytes:buf length:len];
+    [self.serverSocket sendData:self.sendData toHost:self.address port:port withTimeout:-1 tag:tag];
+}
+
+/* Send Real Start Command */
+- (IBAction)sendRealStartComm:(UIButton *)sender
+{
+    long tag = 0;
+    mavlink_message_t msg;
+    
+    KCMavlinkCommandLong *commandLong = [[KCMavlinkCommandLong alloc] init];
+    NSNumber *cmd = [[NSNumber alloc] initWithUnsignedShort:MAV_CMD_NAV_TAKEOFF];
+    [commandLong packCommandLongMsg:self.mavlink fromSystemID:self.thisSystemID fromComponentID:self.thisSystemID Command:cmd Confirmation:0 Param1:0 Param2:0 Param3:0 Param4:0 Param5:0 Param6:0 Param7:0 intoMessage:&msg];
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    NSLog(@"len = %d",len);
+    self.sendData = [NSData dataWithBytes:buf length:len];
+    [self.serverSocket sendData:self.sendData toHost:self.address port:port withTimeout:-1 tag:tag];
+}
+
+/* Send Slow Command */
+- (IBAction)sendSlowComm:(UIButton *)sender
+{
+    long tag = 0;
+    mavlink_message_t msg;
+    mavlink_msg_command_long_pack(1, 200, &msg, targetSysID, targetCompID, MAV_CMD_OVERRIDE_GOTO, 0, 0, 0, 0, 0, 0, 0, 0);
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    NSLog(@"Send GOTO");
+    self.sendData = [NSData dataWithBytes:buf length:len];
+    [self.serverSocket sendData:self.sendData toHost:self.address port:port withTimeout:-1 tag:tag];
+}
+
+
+/* Send Stop Command */
+- (IBAction)sendStopComm:(UIButton *)sender
+{
+    long tag = 0;
+    mavlink_message_t msg;
+    mavlink_msg_command_long_pack(1, 200, &msg, targetSysID, targetCompID, MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN, 0, 0, 0, 0, 0, 0, 0, 0);
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    NSLog(@"Send REBOOT_SHUTDOWN");
+    self.sendData = [NSData dataWithBytes:buf length:len];
+    [self.serverSocket sendData:self.sendData toHost:self.address port:port withTimeout:-1 tag:tag];
+}
+
 - (void)viewDidUnload {
+    [self setHeartBeatRealData:nil];
+    [self setHdgRealData:nil];
+    [self setIPhoneHDGLabel:nil];
+    [self setIPhoneLonLabel:nil];
+    [self setIPhoneLatLabel:nil];
+    [self setIPhoneHDGLabel:nil];
+    [self setIPhoneHDGLabel2:nil];
     [super viewDidUnload];
     free(buf);
 }

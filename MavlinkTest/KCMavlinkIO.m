@@ -39,7 +39,7 @@
 //    self.mavlinkMsg = [[NSMutableDictionary alloc] initWithCapacity:2];
     
     Byte *buf = (Byte *)[rawData bytes];
-    NSInteger length = [rawData length];
+    NSInteger length = [rawData length]; //Returns the number of bytes contained in the receiver.
     NSInteger lenPayload;
     NSNumber *temp = [[NSNumber alloc] init];
     for (int i = 0; i < length; ++i) {
