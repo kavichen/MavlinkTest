@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="mNa-Vd-iyO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="PIt-FO-tqM">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - General-->
         <scene sceneID="AWf-Gm-oPD">
             <objects>
                 <viewController id="mNa-Vd-iyO" customClass="KCViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPe-O9-7i7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JbJ-sj-gIp">
                                 <rect key="frame" x="113" y="186" width="95" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="HeartBeat">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendHeartBeat:" destination="mNa-Vd-iyO" eventType="touchUpInside" id="0IU-kK-ux2"/>
@@ -31,13 +26,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s92-h7-YET">
                                 <rect key="frame" x="20" y="145" width="95" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="+">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendStartComm:" destination="mNa-Vd-iyO" eventType="touchUpInside" id="aLg-7V-9h3"/>
@@ -46,13 +36,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0xF-ma-9Qh">
                                 <rect key="frame" x="205" y="145" width="89" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="-">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendSlowComm:" destination="mNa-Vd-iyO" eventType="touchUpInside" id="GRK-ZG-cWD"/>
@@ -61,13 +46,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X2X-az-tuN">
                                 <rect key="frame" x="20" y="230" width="95" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendStopComm:" destination="mNa-Vd-iyO" eventType="touchUpInside" id="tFm-Ch-P2r"/>
@@ -76,13 +56,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eri-5v-M2d">
                                 <rect key="frame" x="199" y="230" width="95" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Real Start">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendRealStartComm:" destination="mNa-Vd-iyO" eventType="touchUpInside" id="FaD-uN-SHs"/>
@@ -96,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GkG-2w-Znu">
-                                <rect key="frame" x="20" y="20" width="131" height="58"/>
+                                <rect key="frame" x="95" y="28" width="131" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="62"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -147,6 +122,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="General" id="3co-sZ-k1s"/>
+                    <navigationItem key="navigationItem" id="Vvo-kk-7BZ"/>
                     <connections>
                         <outlet property="hdgRealData" destination="GkG-2w-Znu" id="Z1g-lb-3mi"/>
                         <outlet property="heartBeatRealData" destination="I5d-Cb-4aC" id="RKq-xg-Ghk"/>
@@ -154,28 +131,58 @@
                         <outlet property="iPhoneHDGLabel2" destination="SI8-bb-Ooa" id="Y7I-Gn-YD5"/>
                         <outlet property="iPhoneLatLabel" destination="ybD-hO-RKY" id="C46-vF-PMq"/>
                         <outlet property="iPhoneLonLabel" destination="bIu-Nm-LTG" id="oTm-id-j5a"/>
+                        <outlet property="realLatitudeLabel" destination="6uP-5U-XQo" id="4a1-gG-Hcj"/>
+                        <outlet property="realLongitudeLabel" destination="boZ-WC-RW0" id="gGV-Ve-AuM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6u-30-usG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-104" y="50"/>
+            <point key="canvasLocation" x="45" y="-64"/>
+        </scene>
+        <!--Map View Controller - Map View-->
+        <scene sceneID="koZ-Uh-J3A">
+            <objects>
+                <viewController id="lP8-7a-qQ5" customClass="KCMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gks-F1-LT8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="7Ox-Uh-d8A">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map View" id="WR2-5i-FwF"/>
+                    <connections>
+                        <outlet property="mapView" destination="7Ox-Uh-d8A" id="cdb-De-vkG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q7R-VZ-bVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61" y="606"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jfk-aq-scY">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="PIt-FO-tqM" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="byd-0N-sNS">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="mNa-Vd-iyO" kind="relationship" relationship="viewControllers" id="L9J-Ab-vcf"/>
+                        <segue destination="lP8-7a-qQ5" kind="relationship" relationship="viewControllers" id="00V-D9-kvN"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbo-Bm-b3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-440" y="244"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="KCViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/KCViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sendRealStartComm:" candidateClass="UIButton"/>
-                <relationship kind="action" name="sendStopComm:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="hdgRealData" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="heartBeatRealData" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iPhoneHDGLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iPhoneHDGLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iPhoneLatLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iPhoneLonLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

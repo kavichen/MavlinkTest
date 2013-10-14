@@ -23,6 +23,7 @@
 		5A6A46F7174759D10021DB7A /* KCMavlinkAttitude.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46F6174759D00021DB7A /* KCMavlinkAttitude.m */; };
 		5A6A46FD17475D160021DB7A /* KCMavlinkRawIMU.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46FC17475D0B0021DB7A /* KCMavlinkRawIMU.m */; };
 		5A6A4700174761E70021DB7A /* KCMavlinkCommandLong.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46FF174761E60021DB7A /* KCMavlinkCommandLong.m */; };
+		5A7FD6D017B8910A007CBA40 /* KCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7FD6CF17B8910A007CBA40 /* KCMapViewController.m */; };
 		5A90B634172E09B600DEED7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B633172E09B600DEED7A /* UIKit.framework */; };
 		5A90B636172E09B600DEED7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B635172E09B600DEED7A /* Foundation.framework */; };
 		5A90B638172E09B600DEED7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A90B637172E09B600DEED7A /* CoreGraphics.framework */; };
@@ -41,6 +42,7 @@
 		5A96932317462F4A00F382C3 /* KCMavlinkSystemTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */; };
 		5A9693261746353D00F382C3 /* KCMavlinkSetMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */; };
 		5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */; };
+		5AD9E82218091B8600AE754C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD9E82118091B8500AE754C /* MapKit.framework */; };
 		5ADC03E0173798E6004A9ACC /* KCMavlinkIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */; };
 		5ADC03E31737A623004A9ACC /* KCSokcet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03E21737A622004A9ACC /* KCSokcet.m */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,8 @@
 		5A6A46FC17475D0B0021DB7A /* KCMavlinkRawIMU.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkRawIMU.m; sourceTree = "<group>"; };
 		5A6A46FE174761E40021DB7A /* KCMavlinkCommandLong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkCommandLong.h; sourceTree = "<group>"; };
 		5A6A46FF174761E60021DB7A /* KCMavlinkCommandLong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkCommandLong.m; sourceTree = "<group>"; };
+		5A7FD6CE17B8910A007CBA40 /* KCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMapViewController.h; sourceTree = "<group>"; };
+		5A7FD6CF17B8910A007CBA40 /* KCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMapViewController.m; sourceTree = "<group>"; };
 		5A90B630172E09B600DEED7A /* MavlinkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A90B633172E09B600DEED7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5A90B635172E09B600DEED7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -263,6 +267,7 @@
 		5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkSetMode.m; sourceTree = "<group>"; };
 		5AAE5F87178FDAB0002C6C0D /* KCMavlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMessage.h; sourceTree = "<group>"; };
 		5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMessage.m; sourceTree = "<group>"; };
+		5AD9E82118091B8500AE754C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5ADC03DE173798E6004A9ACC /* KCMavlinkIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkIO.h; sourceTree = "<group>"; };
 		5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkIO.m; sourceTree = "<group>"; };
 		5ADC03E11737A622004A9ACC /* KCSokcet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSokcet.h; sourceTree = "<group>"; };
@@ -274,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AD9E82218091B8600AE754C /* MapKit.framework in Frameworks */,
 				5A372B8717B5D372009F3DDD /* CoreLocation.framework in Frameworks */,
 				5A90B700172E202C00DEED7A /* CFNetwork.framework in Frameworks */,
 				5A90B634172E09B600DEED7A /* UIKit.framework in Frameworks */,
@@ -307,6 +313,7 @@
 		5A90B632172E09B600DEED7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AD9E82118091B8500AE754C /* MapKit.framework */,
 				5A90B633172E09B600DEED7A /* UIKit.framework */,
 				5A90B635172E09B600DEED7A /* Foundation.framework */,
 				5A90B637172E09B600DEED7A /* CoreGraphics.framework */,
@@ -328,6 +335,8 @@
 				5ADC03E11737A622004A9ACC /* KCSokcet.h */,
 				5ADC03E21737A622004A9ACC /* KCSokcet.m */,
 				5A90B63A172E09B600DEED7A /* Supporting Files */,
+				5A7FD6CE17B8910A007CBA40 /* KCMapViewController.h */,
+				5A7FD6CF17B8910A007CBA40 /* KCMapViewController.m */,
 			);
 			path = MavlinkTest;
 			sourceTree = "<group>";
@@ -728,6 +737,7 @@
 				5A6A46FD17475D160021DB7A /* KCMavlinkRawIMU.m in Sources */,
 				5A6A4700174761E70021DB7A /* KCMavlinkCommandLong.m in Sources */,
 				5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */,
+				5A7FD6D017B8910A007CBA40 /* KCMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,11 +833,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MavlinkTest/MavlinkTest-Prefix.pch";
 				INFOPLIST_FILE = "MavlinkTest/MavlinkTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -840,11 +850,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MavlinkTest/MavlinkTest-Prefix.pch";
 				INFOPLIST_FILE = "MavlinkTest/MavlinkTest-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B8B46F2-DAAE-4A20-995B-D4AC80A879E6";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -48,6 +48,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *iPhoneLatLabel;
 
 @property (strong,nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) IBOutlet UILabel *realLatitudeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *realLongitudeLabel;
 @end
 
 @implementation KCViewController
@@ -186,11 +188,10 @@ withFilterContext:(id)filterContext
             mavlink_msg_global_position_int_decode(&msg, &mavlinkGlabalPosition);
             NSNumber *hdg = [[NSNumber alloc] initWithUnsignedInt:mavlinkGlabalPosition.hdg/100];
             NSNumber *lat = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lat];
+            NSLog(@"%@",lat);
             NSNumber *lon = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lon];
-            /*testing*/
-              /*testing*/
-              /*testing*/
-              /*testing*/
+            self.realLatitudeLabel.text = [lat stringValue];
+            self.realLongitudeLabel.text = [lon stringValue];
             self.hdgRealData.text = [hdg stringValue];
         }
         default:
@@ -302,6 +303,8 @@ withFilterContext:(id)filterContext
     [self setIPhoneLatLabel:nil];
     [self setIPhoneHDGLabel:nil];
     [self setIPhoneHDGLabel2:nil];
+    [self setRealLatitudeLabel:nil];
+    [self setRealLongitudeLabel:nil];
     [super viewDidUnload];
     free(buf);
 }
