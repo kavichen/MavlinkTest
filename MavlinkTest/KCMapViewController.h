@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+#import "KCLocationDelegate.h"
 
-@interface KCMapViewController : UIViewController
-
+@interface KCMapViewController : UIViewController<MKMapViewDelegate,KCLocationDelegate>
+{
+    MKMapView *autoNaviMapView;
+//    id<KCLocationDelegate> boatLocationDelegate;
+}
 @end

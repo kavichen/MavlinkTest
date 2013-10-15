@@ -13,11 +13,14 @@
 #import "KCMavlinkSysStatus.h"
 #import "KCMavlinkCommandLong.h"
 #import <CoreLocation/CoreLocation.h>
+#import "KCLocationDelegate.h"
 
 
 
 @interface KCViewController : UIViewController<NSXMLParserDelegate,CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
+    id<KCLocationDelegate> showBoatLocationDataDelegate;
 }
 
+@property (nonatomic,strong) id<KCLocationDelegate> showBoatLocationDataDelegate;
 @end

@@ -64,6 +64,8 @@
 @synthesize thisSystemID = _thisSystemID;
 @synthesize thisComponentID = _thisComponentID;
 @synthesize locationManager = _locationManager;
+@synthesize showBoatLocationDataDelegate = _shwoBoatLocationDataDelegate;
+
 
 -(GCDAsyncUdpSocket *)serverSocket
 {
@@ -193,6 +195,8 @@ withFilterContext:(id)filterContext
             self.realLatitudeLabel.text = [lat stringValue];
             self.realLongitudeLabel.text = [lon stringValue];
             self.hdgRealData.text = [hdg stringValue];
+            // map view controller delegate
+            [showBoatLocationDataDelegate sendBoatLocation:lon and:lat];
         }
         default:
             break;

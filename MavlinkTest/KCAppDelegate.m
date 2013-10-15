@@ -7,11 +7,14 @@
 //
 
 #import "KCAppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation KCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [GMSServices provideAPIKey:@"AIzaSyC71jg14xLjpw0UKpyW4mGwhhg2Twre7jQ"];
+//    [GMSServices provideAPIKey:@"{AIzaSyC71jg14xLjpw0UKpyW4mGwhhg2Twre7jQ}"];
     // Override point for customization after application launch.
     return YES;
 }
