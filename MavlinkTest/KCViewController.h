@@ -23,4 +23,5 @@
 }
 
 @property (nonatomic,strong) id<KCLocationDelegate> showBoatLocationDataDelegate;
+//@property (nonatomic,strong) NSString *address;
 @end

@@ -27,6 +27,8 @@
     NSInteger targetCompID;
     NSNumber *thisSystemID;
     NSNumber *thisComponentID;
+    CLLocationCoordinate2D currentBoatLocation;
+    NSNumber *boatHGD;
 }
 //@property (nonatomic,strong) GCDAsyncUdpSocket *server_socket;
 //@property (strong, nonatomic) IBOutlet UIButton *heartBeat;
@@ -118,25 +120,51 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 0.1;
+//    locationManager.heading = YES;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.headingFilter = 1;
     
     [locationManager startUpdatingLocation];
     [locationManager startUpdatingHeading];
 }
-/* location */
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+
+
+/**
+ *  Location coordinate update
+ *
+ *  @param manager
+ *  @param locations
+ */
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    CLLocationCoordinate2D loc = [newLocation coordinate];
-//    float longitude = loc.longitude;
-//    float latitude = loc.latitude;
-    NSNumber *longitude =[[NSNumber alloc] initWithFloat:loc.longitude];
+    currentBoatLocation = [[locations lastObject] coordinate];
+//    NSLog(@"%f",currentBoatLocation.latitude);
+//    NSLog(@"%f",currentBoatLocation.longitude);
+    NSNumber *longitude =[[NSNumber alloc] initWithFloat:currentBoatLocation.longitude];
     self.iPhoneLonLabel.text = [longitude stringValue];
-    NSNumber *latitude = [[NSNumber alloc] initWithFloat:loc.latitude];
+    NSNumber *latitude = [[NSNumber alloc] initWithFloat:currentBoatLocation.latitude];
     self.iPhoneLatLabel.text = [latitude stringValue];
     
-//    CLLocationDirection hdgTrue = [new]
+    if([self.showBoatLocationDataDelegate respondsToSelector:@selector(sendBoatHeading:andCoordinate:)]){
+//        NSLog(@"#1 showBoatLocationDataDelegate sent");
+        [self.showBoatLocationDataDelegate sendBoatHeading:boatHGD andCoordinate:currentBoatLocation];
+        
+    }
 }
+
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+//{
+//    CLLocationCoordinate2D loc = [newLocation coordinate];
+////    float longitude = loc.longitude;
+////    float latitude = loc.latitude;
+//    NSNumber *longitude =[[NSNumber alloc] initWithFloat:loc.longitude];
+//    self.iPhoneLonLabel.text = [longitude stringValue];
+//    NSNumber *latitude = [[NSNumber alloc] initWithFloat:loc.latitude];
+//    self.iPhoneLatLabel.text = [latitude stringValue];
+//    
+////    CLLocationDirection hdgTrue = [new]
+//}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
 {
@@ -189,14 +217,25 @@ withFilterContext:(id)filterContext
             mavlink_global_position_int_t mavlinkGlabalPosition;
             mavlink_msg_global_position_int_decode(&msg, &mavlinkGlabalPosition);
             NSNumber *hdg = [[NSNumber alloc] initWithUnsignedInt:mavlinkGlabalPosition.hdg/100];
+            if (boatHGD == nil) {
+                boatHGD = [[NSNumber alloc] initWithFloat:0.0f];
+            }else{
+                boatHGD = hdg;
+            }
+            
             NSNumber *lat = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lat];
-            NSLog(@"%@",lat);
             NSNumber *lon = [[NSNumber alloc] initWithInt:mavlinkGlabalPosition.lon];
+            #pragma location delegate
+//            [showBoatLocationDataDelegate sendBoatLocation:lat and:lon];
+            
+            if([self.showBoatLocationDataDelegate respondsToSelector:@selector(sendBoatHeading:andCoordinate:)]){
+//                NSLog(@"#1 showBoatLocationDataDelegate sent!");
+                [self.showBoatLocationDataDelegate sendBoatHeading:hdg andCoordinate:currentBoatLocation];
+
+            }
             self.realLatitudeLabel.text = [lat stringValue];
             self.realLongitudeLabel.text = [lon stringValue];
             self.hdgRealData.text = [hdg stringValue];
-            // map view controller delegate
-            [showBoatLocationDataDelegate sendBoatLocation:lon and:lat];
         }
         default:
             break;

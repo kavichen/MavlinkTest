@@ -10,7 +10,7 @@
             <objects>
                 <viewController id="mNa-Vd-iyO" customClass="KCViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPe-O9-7i7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JbJ-sj-gIp">
@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GkG-2w-Znu">
-                                <rect key="frame" x="95" y="28" width="131" height="58"/>
+                                <rect key="frame" x="20" y="28" width="131" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="62"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -144,7 +144,7 @@
             <objects>
                 <viewController id="lP8-7a-qQ5" customClass="KCMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gks-F1-LT8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -154,16 +154,67 @@
             </objects>
             <point key="canvasLocation" x="61" y="606"/>
         </scene>
-        <!--Google Mavp View Controller - Google-->
+        <!--Google Map Test View Controller - Item-->
+        <scene sceneID="IkB-vV-t59">
+            <objects>
+                <viewController id="lQz-gg-vYR" customClass="KCGoogleMapTestViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VS6-lH-aLH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="5v2-Gw-NjG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="bvH-T2-erQ"/>
+                    <connections>
+                        <outlet property="_mapView" destination="5v2-Gw-NjG" id="1Qs-Bx-GcG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pwz-vK-Ttb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-440" y="820"/>
+        </scene>
+        <!--Google Map View Controller - Google-->
         <scene sceneID="2PF-fO-mAx">
             <objects>
-                <viewController id="DWO-Al-Xjw" customClass="KCGoogleMavpViewController" sceneMemberID="viewController">
+                <viewController id="DWO-Al-Xjw" customClass="KCGoogleMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XVO-QL-7f7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5J1-sq-LwX">
+                                <rect key="frame" x="136" y="269" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="update">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateCamera:" destination="DWO-Al-Xjw" eventType="touchUpInside" id="4hJ-cq-fhs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I9O-wI-3Tq">
+                                <rect key="frame" x="132" y="307" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Zoom in">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="zoomIn:" destination="DWO-Al-Xjw" eventType="touchUpInside" id="IyO-ME-Djg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Google" id="VgM-I6-rJQ"/>
+                    <connections>
+                        <outlet property="updateButton" destination="5J1-sq-LwX" id="pd4-py-GxN"/>
+                        <outlet property="zoomIn" destination="I9O-wI-3Tq" id="HhU-C1-ETm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XuJ-UZ-9a4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,6 +234,7 @@
                         <segue destination="mNa-Vd-iyO" kind="relationship" relationship="viewControllers" id="L9J-Ab-vcf"/>
                         <segue destination="lP8-7a-qQ5" kind="relationship" relationship="viewControllers" id="00V-D9-kvN"/>
                         <segue destination="DWO-Al-Xjw" kind="relationship" relationship="viewControllers" id="Aif-bc-WWe"/>
+                        <segue destination="lQz-gg-vYR" kind="relationship" relationship="viewControllers" id="EGh-bW-KUk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbo-Bm-b3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,6 +245,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

@@ -11,9 +11,11 @@
 #import <MapKit/MapKit.h>
 #import "KCLocationDelegate.h"
 
-@interface KCMapViewController : UIViewController<MKMapViewDelegate,KCLocationDelegate>
+@interface KCMapViewController : UIViewController<MKMapViewDelegate,KCLocationDelegate,CLLocationManagerDelegate>
 {
     MKMapView *autoNaviMapView;
-//    id<KCLocationDelegate> boatLocationDelegate;
+    id<KCLocationDelegate> boatLocationDelegate;
 }
+@property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic,strong) id<KCLocationDelegate> boatLocationDelegate;
 @end

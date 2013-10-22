@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol KCLocationDelegate <NSObject>
--(void)sendBoatLocation:(NSNumber *)boatLongitude and:(NSNumber *)boatLatitude;
+-(void)sendBoatHeading:(NSNumber *)boatHeadingDirection andCoordinate:(CLLocationCoordinate2D)coordinate;
+
 @end
