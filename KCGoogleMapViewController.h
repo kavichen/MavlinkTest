@@ -12,6 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "KCLocationDelegate.h"
 #import "KCViewController.h"
+#import "BoatLocation.h"
+#import "BoatTrack.h"
 
 @interface KCGoogleMapViewController : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate,KCLocationDelegate>
 @property (nonatomic,strong) CLLocationManager *locationManger;

@@ -26,6 +26,8 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     IBOutlet UIButton *updateButton;
     IBOutlet UIButton *zoomIn;
     BOOL firstLocationUpdate;
+    NSArray *currentPath;
+    GMSMutablePath *testPath;
 }
 
 @synthesize locationManger = _locationManger;
@@ -78,16 +80,9 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 
 /**
  *  首次载入 Google map
- *
- *  @param Longitude 经度坐标
- *  @param Latitude  纬度坐标
  */
 - (void)loadMapView
 {
-//    CLLocationDegrees nbLongitude = 121.597041; // inital longitude
-//    CLLocationDegrees nbLatitude = 29.858904; // inital latitude
-//   3 mapView_.delegate = self;
-//    GMSCameraPosition *nbCameraPosition = [GMSCameraPosition cameraWithLatitude:nbLatitude longitude:nbLongitude zoom:8];
     currentBoatLocationCameraPosition = [[GMSCameraPosition alloc] initWithTarget:currentBoatLocation
                                                                              zoom:17
                                                                           bearing:0
@@ -100,9 +95,20 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     mapView_.indoorEnabled = NO; // 室内地图关闭
     
     mapView_.delegate = self;
-    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
+//    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
+    [mapView_ addObserver:self
+           forKeyPath:@"myLocation"
+              options:NSKeyValueObservingOptionNew
+              context:NULL];
+    
     self.view = mapView_;
-       // 修改 myLocationButton 的位置
+
+// Ask for my location data after the map has already been added to the UI
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mapView_.myLocationEnabled = YES;
+    });
+    
+// 修改 myLocationButton 的位置
     for (UIView *view in mapView_.subviews) {
         NSLog(@"%@",view.description);
         if([[[view class] description] isEqualToString:@"GMSUISettingsView"]){
@@ -113,10 +119,6 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
             view.frame = frame;
         }
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-//        mapView_.myLocationEnabled = NO; // yes - 显示目前的所在地的小圆点
-    });
-    
     //load boatLocationMarker
     boatLocationMarker = [[GMSMarker alloc] init];
     boatLocationMarker.icon = [UIImage imageNamed:@"up.png"];
@@ -193,16 +195,56 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     currentBoatLocation = [[locations lastObject] coordinate];
 }
 
+- (void)addWayPointIntoCurrentPath
+{
+    if ([currentPath firstObject] == nil) {
+//        NSMutableDictionary *initalWayPoint = [[NSMutableDictionary alloc] initWithObjectsAndKeys:,@"initalWayPoint",nil];
+        
+    }
+}
+
+- (void)addNewMarkerIntoPath:(CLLocationCoordinate2D)coordinate
+{
+    GMSMarker *marker = [GMSMarker markerWithPosition:coordinate];
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.draggable = YES;
+    marker.map = mapView_;
+    
+    [testPath addCoordinate:marker.position];
+}
 #pragma mark - GMSMapViewDelegate
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    NSLog(@"You tapped at %f,%f",coordinate.latitude,coordinate.longitude);
+    if (testPath == nil) {
+        testPath = [GMSMutablePath path];
+    }
+    [self addNewMarkerIntoPath:coordinate];
 }
 
-- (void)mapView:(GMSMapView *)mapView_ didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+
+- (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    NSLog(@"tap long time");
+    GMSPolyline *polyLine = [GMSPolyline polylineWithPath:testPath];
+    polyLine.strokeColor = [UIColor redColor];
+    polyLine.strokeWidth = 3.0f;
+    polyLine.tappable = YES;
+    polyLine.title = @"test poly line";
+    polyLine.map = mapView_;
+//    GMSMarker *marker = [GMSMarker markerWithPosition:coordinate];
+//    marker.appearAnimation = kGMSMarkerAnimationPop;
+//    marker.draggable = YES;
+//    marker.tappable = YES;
+//    marker.map = mapView;
+}
+
+
+- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
+{
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    customView.backgroundColor = [UIColor redColor];
+    customView.alpha = 0.2;
+    return customView;
 }
 
 - (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
@@ -230,7 +272,9 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 
 - (void)dealloc
 {
-    [mapView_ removeObserver:self forKeyPath:@"myLocation"];
+    [mapView_ removeObserver:self
+                  forKeyPath:@"myLocation"
+                     context:NULL];
 }
 
 @end
