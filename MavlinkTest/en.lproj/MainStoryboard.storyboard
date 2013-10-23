@@ -186,35 +186,9 @@
                     <view key="view" contentMode="scaleToFill" id="XVO-QL-7f7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5J1-sq-LwX">
-                                <rect key="frame" x="136" y="269" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="update">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="updateCamera:" destination="DWO-Al-Xjw" eventType="touchUpInside" id="4hJ-cq-fhs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I9O-wI-3Tq">
-                                <rect key="frame" x="132" y="307" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Zoom in">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="zoomIn:" destination="DWO-Al-Xjw" eventType="touchUpInside" id="IyO-ME-Djg"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Google" id="VgM-I6-rJQ"/>
-                    <connections>
-                        <outlet property="updateButton" destination="5J1-sq-LwX" id="pd4-py-GxN"/>
-                        <outlet property="zoomIn" destination="I9O-wI-3Tq" id="HhU-C1-ETm"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XuJ-UZ-9a4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

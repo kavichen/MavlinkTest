@@ -68,6 +68,10 @@
 @synthesize locationManager = _locationManager;
 @synthesize showBoatLocationDataDelegate = _shwoBoatLocationDataDelegate;
 
+-(void)awakeFromNib
+{
+    self.tabBarController.tabBar.alpha = 0.5;
+}
 
 -(GCDAsyncUdpSocket *)serverSocket
 {
