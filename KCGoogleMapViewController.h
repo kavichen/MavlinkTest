@@ -14,7 +14,13 @@
 #import "KCViewController.h"
 #import "BoatLocation.h"
 #import "BoatTrack.h"
+#import "KCCustomInfoWindow.h"
+#import <sqlite3.h>
+
 
 @interface KCGoogleMapViewController : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate,KCLocationDelegate>
+{
+    sqlite3 *database;
+}
 @property (nonatomic,strong) CLLocationManager *locationManger;
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A018BDC1818CADB009A34DF /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A018BDB1818CADB009A34DF /* InfoWindow.xib */; };
+		5A018BDF1818CB7E009A34DF /* KCCustomInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */; };
 		5A10177A180FDE8D00D1122E /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A101779180FDE8D00D1122E /* up.png */; };
 		5A372B8717B5D372009F3DDD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A372B8617B5D372009F3DDD /* CoreLocation.framework */; };
 		5A6A46D317470E020021DB7A /* KCMavlinkParamRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */; };
@@ -57,13 +59,18 @@
 		5A96931F1746130900F382C3 /* KCMavlinkSysStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A96931E1746130900F382C3 /* KCMavlinkSysStatus.m */; };
 		5A96932317462F4A00F382C3 /* KCMavlinkSystemTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */; };
 		5A9693261746353D00F382C3 /* KCMavlinkSetMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */; };
+		5A96B92F181A412400E2C2DC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A96B92E181A412400E2C2DC /* libsqlite3.dylib */; };
 		5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */; };
 		5AD9E82218091B8600AE754C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD9E82118091B8500AE754C /* MapKit.framework */; };
 		5ADC03E0173798E6004A9ACC /* KCMavlinkIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */; };
 		5ADC03E31737A623004A9ACC /* KCSokcet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03E21737A622004A9ACC /* KCSokcet.m */; };
+		5AE832FE18191C50005FCA31 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE832FD18191C50005FCA31 /* back.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A018BDB1818CADB009A34DF /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
+		5A018BDD1818CB7E009A34DF /* KCCustomInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCustomInfoWindow.h; sourceTree = "<group>"; };
+		5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCustomInfoWindow.m; sourceTree = "<group>"; };
 		5A101779180FDE8D00D1122E /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		5A372B8617B5D372009F3DDD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5A6A46D117470E020021DB7A /* KCMavlinkParamRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestList.h; sourceTree = "<group>"; };
@@ -300,6 +307,7 @@
 		5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkSystemTime.m; sourceTree = "<group>"; };
 		5A9693241746353C00F382C3 /* KCMavlinkSetMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkSetMode.h; sourceTree = "<group>"; };
 		5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkSetMode.m; sourceTree = "<group>"; };
+		5A96B92E181A412400E2C2DC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5AAE5F87178FDAB0002C6C0D /* KCMavlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMessage.h; sourceTree = "<group>"; };
 		5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMessage.m; sourceTree = "<group>"; };
 		5AD9E82118091B8500AE754C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -307,6 +315,7 @@
 		5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkIO.m; sourceTree = "<group>"; };
 		5ADC03E11737A622004A9ACC /* KCSokcet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCSokcet.h; sourceTree = "<group>"; };
 		5ADC03E21737A622004A9ACC /* KCSokcet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCSokcet.m; sourceTree = "<group>"; };
+		5AE832FD18191C50005FCA31 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +323,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A96B92F181A412400E2C2DC /* libsqlite3.dylib in Frameworks */,
 				5A737CCB180D27DA002A42CC /* SystemConfiguration.framework in Frameworks */,
 				5A737CC9180D27BF002A42CC /* QuartzCore.framework in Frameworks */,
 				5A737CC7180D27B3002A42CC /* OpenGLES.framework in Frameworks */,
@@ -358,6 +368,7 @@
 		5A90B632172E09B600DEED7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A96B92E181A412400E2C2DC /* libsqlite3.dylib */,
 				5A737CCA180D27DA002A42CC /* SystemConfiguration.framework */,
 				5A737CC8180D27BF002A42CC /* QuartzCore.framework */,
 				5A737CC6180D27B3002A42CC /* OpenGLES.framework */,
@@ -384,6 +395,7 @@
 		5A90B639172E09B600DEED7A /* MavlinkTest */ = {
 			isa = PBXGroup;
 			children = (
+				5AE832FC18191C08005FCA31 /* Resource */,
 				5A737CCC180D289C002A42CC /* KCGoogleMapViewController.h */,
 				5A737CCD180D289C002A42CC /* KCGoogleMapViewController.m */,
 				5A96932017462EF900F382C3 /* ObjMavlink */,
@@ -402,6 +414,9 @@
 				5A8F7F28181776B1003BCDA7 /* BoatLocation.m */,
 				5A8F7F2A18177C7A003BCDA7 /* BoatTrack.h */,
 				5A8F7F2B18177C7A003BCDA7 /* BoatTrack.m */,
+				5A018BDB1818CADB009A34DF /* InfoWindow.xib */,
+				5A018BDD1818CB7E009A34DF /* KCCustomInfoWindow.h */,
+				5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */,
 			);
 			path = MavlinkTest;
 			sourceTree = "<group>";
@@ -693,6 +708,14 @@
 			name = ObjMavlink;
 			sourceTree = "<group>";
 		};
+		5AE832FC18191C08005FCA31 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5AE832FD18191C50005FCA31 /* back.png */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -748,7 +771,9 @@
 			files = (
 				5A10177A180FDE8D00D1122E /* up.png in Resources */,
 				5A90B63E172E09B600DEED7A /* InfoPlist.strings in Resources */,
+				5AE832FE18191C50005FCA31 /* back.png in Resources */,
 				5A90B646172E09B600DEED7A /* Default.png in Resources */,
+				5A018BDC1818CADB009A34DF /* InfoWindow.xib in Resources */,
 				5A90B648172E09B600DEED7A /* Default@2x.png in Resources */,
 				5A737CB5180D26FD002A42CC /* GoogleMaps.bundle in Resources */,
 				5A90B64A172E09B600DEED7A /* Default-568h@2x.png in Resources */,
@@ -783,6 +808,7 @@
 				5A90B644172E09B600DEED7A /* KCAppDelegate.m in Sources */,
 				5A90B650172E09B600DEED7A /* KCViewController.m in Sources */,
 				5A90B6FE172E1F2100DEED7A /* GCDAsyncUdpSocket.m in Sources */,
+				5A018BDF1818CB7E009A34DF /* KCCustomInfoWindow.m in Sources */,
 				5ADC03E0173798E6004A9ACC /* KCMavlinkIO.m in Sources */,
 				5A737CCE180D289C002A42CC /* KCGoogleMapViewController.m in Sources */,
 				5ADC03E31737A623004A9ACC /* KCSokcet.m in Sources */,
