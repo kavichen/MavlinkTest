@@ -725,6 +725,7 @@
 			buildPhases = (
 				5A90B62C172E09B600DEED7A /* Sources */,
 				5A90B62D172E09B600DEED7A /* Frameworks */,
+				5AA3EC7D181F950B00633E4E /* ShellScript */,
 				5A90B62E172E09B600DEED7A /* Resources */,
 				5A2BDCFE174093CB0028AA7D /* ShellScript */,
 			);
@@ -796,6 +797,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${PLATFORM_NAME}\" ==\"iphoneos\" ] || [ \"${PLATFORM_NAME}\" == \"ipados\"]; then\n\n/Applications/Xcode.app/Contents/Developer/iphoneentitlements/gen_entitlements.py\"my.company.${PROJECT_NAME}\"\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\n\ncodesign -f -s\"iPhone Developer\" --entitlements\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\"\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\n\nfi";
+		};
+		5AA3EC7D181F950B00633E4E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -928,6 +942,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/kavi/Developer/MavlinkTest,
@@ -949,6 +964,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
+				CURRENT_PROJECT_VERSION = 2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/kavi/Developer/MavlinkTest,

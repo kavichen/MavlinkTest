@@ -163,11 +163,6 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     boatLocationMarker.rotation = heading;
 }
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [self loadMapView];
-//}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -179,52 +174,40 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
  
 }
 
+-(BOOL)checkFirstLaunchOrNot
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"firstLaunchKey"]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-//    NSString *documentDirectory = [paths objectAtIndex:0];
-//    NSString *filePath = [NSString stringWithString:[documentDirectory stringByAppendingString:kFilename]];
-//    NSLog(@"%@",filePath);
-//    [self openDatabase];
-    // load database
-    [self createDatabase];
-//    [self removeFilesInSandbox:nil];
-
+    
+    //Detect the first launch
+    if ([self checkFirstLaunchOrNot]) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *build = infoDictionary[(NSString *)kCFBundleVersionKey];
+        NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSString *firstLaunchValue = [NSString stringWithFormat:@"first_launch_V%@_B%@_%@",version,build,[NSDate date]];
+        [[NSUserDefaults standardUserDefaults] setObject:firstLaunchValue forKey:@"firstLaunchKey"];
+        NSLog(@"first launch");
+         [self createDatabase];
+    }else{
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSLog(@"First Launch Value = %@",[defaults objectForKey:@"firstLaunchKey"]);
+    }
+    
     // load UI View Part
     [self loadMapView];
     UIButton *addPathButton = [self buildAddPathButton];
     [addPathButton addTarget:self action:@selector(addPathButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [mapView_ addSubview:addPathButton];
 }
-
-// sqlite part
-//-(void)applicationWillResignActive:(NSNotification *)notification
-//{
-//    sqlite3* database;
-//    if(sqlite3_open([[self dataFilePath] UTF8String], &database) !=SQLITE_OK){
-//        sqlite3_close(database);
-//        NSAssert(0,@"Failed to open database");
-//    }
-//    for (int i = 1; i<= 4; i++) {
-//        NSString *fieldName = [[NSString alloc] initWithFormat:@"field%d",i];
-//        UITextField *field = [self valueForKey:fieldName];
-//        
-//        char *update = "INSERT OR REPLACE INTO FIELDS (ROW, FIELD_DATA)"
-//                        " VALUES(?,?);";
-//        
-//        char *errorMsg = NULL;
-//        sqlite3_stmt *stmt;
-//        if (sqlite3_prepare_v2(database, update, -1,&stmt, nil) == SQLITE_OK){
-//            sqlite3_bind_int(stmt, 1, i);
-//            sqlite3_bind_text(stmt, 2, [field.text UTF8String], -1, NULL);
-//        }
-//        if (sqlite3_step(stmt)!=SQLITE_DONE){
-//            NSAssert(0,@"Error updating table:%s",errorMsg);
-//        }
-//        sqlite3_finalize(stmt);
-//    }
-//}
 
 -(UIButton *)buildAddPathButton
 {
@@ -314,6 +297,12 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 }
 
 # pragma mark - SQLite Process
+
+/**
+ *  When the app first loads, it creates three tables including path, coordiante and belong
+ *  The detail relationship presents in mavlinkDB.graphml file (yEd)
+ */
+
 -(void)createDatabase
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
@@ -370,6 +359,11 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     }
 }
 
+/**
+ *  Call this function to execute sqlite command line
+ *
+ *  @param sql command line
+ */
 -(void)execSQL:(NSString *)sql
 {
     char *errorMsg;
@@ -378,7 +372,8 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
        NSAssert(0, @"execute error: %s",errorMsg);
     }
 }
-#pragma marker - Directory
+
+#pragma mark - Directory
 
 /**
  *  检测文件夹是否存在在某个路径下
