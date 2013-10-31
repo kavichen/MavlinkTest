@@ -21,6 +21,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 @interface KCGoogleMapViewController ()
 @property (nonatomic,strong) NSNumber *boatHeading;
 @property (nonatomic,strong) NSNumber *previousHeading;
+@property (nonatomic,strong) GMSMutablePath *tmpPath;
 @end
 
 @implementation KCGoogleMapViewController{
@@ -35,12 +36,14 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     IBOutlet UIButton *zoomIn;
     BOOL firstLocationUpdate;
     NSArray *currentPath;
-    GMSMutablePath *testPath;
+    GMSMutablePath *_tmpPath;
+    GMSPolyline *tmpPolyline;
 }
 
 @synthesize locationManger = _locationManger;
 @synthesize boatHeading = _boatHeading;
 @synthesize previousHeading = _previousHeading;
+@synthesize tmpPath = _tmpPath;
 
 #pragma getter and setter
 -(NSNumber *)boatHeading
@@ -66,6 +69,18 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     return _locationManger;
 }
 
+-(GMSMutablePath *)tmpPath
+{
+    if (!_tmpPath) {
+        _tmpPath = [GMSMutablePath path];
+    }
+    return _tmpPath;
+}
+
+-(void)setTmpPath:(GMSMutablePath *)newPath
+{
+    _tmpPath = newPath;
+}
 /**
  *  awakeFromNib 在调出 view 前就可以把delegete参数传递给 controller，viewDidLoad 中则不行
  */
@@ -204,18 +219,20 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     
     // load UI View Part
     [self loadMapView];
-    UIButton *addPathButton = [self buildAddPathButton];
-    [addPathButton addTarget:self action:@selector(addPathButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [mapView_ addSubview:addPathButton];
+    [self buildAddPathButton];
+//    [addPathButton addTarget:self action:@selector(addPathButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [mapView_ addSubview:addPathButton];
 }
 
--(UIButton *)buildAddPathButton
+-(void)buildAddPathButton
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(mapView_.bounds.size.width - 100, mapView_.bounds.size.height -  100,100,20);
-    button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-    [button setTitle:@"Button" forState:UIControlStateNormal];
-    return button;
+    UIButton *addPathButton = [UIButton buttonWithType:UIButtonTypeCustom]; // iOS7 新加 UIButtonTypeCustom 属性
+    [(UIButton *)addPathButton addTarget:self action:@selector(addPathButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    addPathButton.frame = CGRectMake(mapView_.bounds.size.width - 200, mapView_.bounds.size.height -  500,52,52);
+    UIImage *btnImage = [UIImage imageNamed:@"portrait.png"];
+    addPathButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    [addPathButton setImage:btnImage forState:UIControlStateNormal];
+    [mapView_ addSubview:addPathButton];
 }
 
 -(void)sendBoatHeading:(NSNumber *)boatHeadingDirection andCoordinate:(CLLocationCoordinate2D)coordinate
@@ -244,133 +261,190 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     }
 }
 
-- (void)addNewMarkerIntoPath:(CLLocationCoordinate2D)coordinate
+/**
+ *  在mapView上新建一个 marker
+ *
+ *  @param theCoordinate 坐标
+ *
+ *  @return 新建的 Marker
+ */
+- (GMSMarker *)createNewMarkerOnCoordinate:(CLLocationCoordinate2D)theCoordinate
 {
-    GMSMarker *marker = [GMSMarker markerWithPosition:coordinate];
-    marker.position = coordinate;
-//    marker.title = @"test";
+    GMSMarker *marker = [GMSMarker markerWithPosition:theCoordinate];
     marker.appearAnimation = kGMSMarkerAnimationPop;
-//    marker.snippet = @"ok";
-    marker.infoWindowAnchor = CGPointMake(0.5f, 0.5f); //
+    marker.infoWindowAnchor = CGPointMake(0.5f, 0.5f);
     marker.draggable = YES;
-    marker.icon = [GMSMarker markerImageWithColor:[UIColor blackColor]];
-    marker.map = mapView_;
-    
-    [testPath addCoordinate:marker.position];
+    marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
+    marker.map = mapView_; // 目前只有一张地图，所以在 method 中不加形参
+    return marker;
 }
 
+- (GMSMutablePath *)addNewMarker:(GMSMarker *)theMarker intoPath:(GMSMutablePath *)thePath
+{
+    [thePath addCoordinate:theMarker.position];
+    return thePath;
+}
+
+- (CLLocationCoordinate2D)getLastCoordinateInPath:(GMSPath *)thePath
+{
+    NSInteger pathCount = [thePath count];
+    return [thePath coordinateAtIndex:pathCount-1];
+}
 #pragma mark - GMSMapViewDelegate
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    if (testPath == nil) {
-        testPath = [GMSMutablePath path];
-    }
-    [self addNewMarkerIntoPath:coordinate];
+//    if (testPath == nil) {
+//        testPath = [GMSMutablePath path];
+//    }
+//    [self addNewMarkerIntoPath:coordinate];
 }
 
 
 - (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    GMSPolyline *polyLine = [GMSPolyline polylineWithPath:testPath];
-    polyLine.strokeColor = [UIColor redColor];
-    polyLine.strokeWidth = 3.0f;
-    polyLine.tappable = YES;
-    polyLine.title = @"test poly line";
-    polyLine.map = mapView_;
+    // 先新建一个 marker
+    // 再将 marker 添加到 tmpPath 中
+    //
+    GMSMarker *marker = [self createNewMarkerOnCoordinate:coordinate];
+    self.tmpPath = [self addNewMarker:marker intoPath:self.tmpPath];
 }
 
 
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker
 {
     KCCustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
-//    infoWindow.data.text = @"1.1";
-//    NSLog(@"%@",infoWindow.data.text);
+    
+    /**
+     *  经纬度坐标的类型为 double，如果用 float 会造成漂移，坐标数据不准确
+     */
+    double lon;
+    double lat;
+    NSLog(@"marker lon = %lf, lat = %lf",marker.position.longitude,marker.position.latitude);
+    for (int i = 0; i< [self.tmpPath count]; i++) {
+        lon = [self.tmpPath coordinateAtIndex:i].longitude;
+        lat = [self.tmpPath coordinateAtIndex:i].latitude;
+        
+        if (lon == marker.position.longitude && lat == marker.position.latitude) {
+            infoWindow.orderNum.text = [NSString stringWithFormat:@"%d",i+1];
+        }
+    }
     return infoWindow;
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker
 {
     mapView.selectedMarker = marker;
-    NSLog(@"%f",marker.position.latitude);
     return YES;
 }
 
 # pragma mark - SQLite Process
-
 /**
- *  When the app first loads, it creates three tables including path, coordiante and belong
- *  The detail relationship presents in mavlinkDB.graphml file (yEd)
+ *  Determine whether open database successfully
+ *
+ *  @return YES for successful, NO for failure
  */
-
--(void)createDatabase
+-(BOOL)openDataBase
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
     NSString *documentDirectoryPath = [paths objectAtIndex:0];
     NSString *databaseDirectoryPath = [self checkDirectoryExitOrNot:@"Database" inPath:documentDirectoryPath];
     NSString *databaseFilePath = [NSString stringWithFormat:@"%@/%@",databaseDirectoryPath,DBName];
-
     if (sqlite3_open([databaseFilePath UTF8String], &database) != SQLITE_OK) {
         sqlite3_close(database);
         NSAssert(0,@"Failed to open database");
+        return NO;
     }
-    
-    NSString *createCoordinateTable =
-                                    @"CREATE TABLE IF NOT EXISTS coordinate"
-                                     "("
-                                     "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                                     "latitude REAL NOT NULL,"
-                                     "longitude REAL NOT NULL"
-                                     ")";
+    return YES;
+}
 
-    NSString *createPathTable =
-                               @"CREATE TABLE IF NOT EXISTS path"
-                                "("
-                                "id INTEGER PRIMARY KEY NOT NULL,"
-                                "name TEXT,"
-                                "coordinateid INTEGER NOT NULL,"
-                                "length REAL,"
-                                "FOREIGN KEY (coordinateid) REFERENCES coordinate(id) ON DELETE CASCADE ON UPDATE CASCADE"
-                                ")";
+-(void)closeDataBase
+{
+    sqlite3_close(database);
+}
 
-    NSString *createBelongTable =
-                                @"CREATE TABLE IF NOT EXISTS belong"
-                                 "("
-                                 "pathid INTEGER,"
-                                 "coordinateid INTEGER,"
-                                 "orderno INTEGER NOT NULL,"
-                                 "FOREIGN KEY (pathid) REFERENCES coordinate(id) ON DELETE CASCADE ON UPDATE CASCADE,"
-                                 "FOREIGN KEY (coordinateid) REFERENCES path(id) ON DELETE CASCADE ON UPDATE CASCADE,"
-                                 "PRIMARY KEY (pathid,coordinateid)"
-                                 ")";
-
-    char *errorMsg;
-    if (sqlite3_exec(database, [createPathTable UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
-        sqlite3_close(database);
-        NSAssert(0, @"Error creating table:%s",errorMsg);
-    }
-    if (sqlite3_exec(database, [createCoordinateTable UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
-        sqlite3_close(database);
-        NSAssert(0, @"Error creating table:%s",errorMsg);
-    }
-    if (sqlite3_exec(database, [createBelongTable UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
-        sqlite3_close(database);
-        NSAssert(0, @"Error creating table:%s",errorMsg);
+/**
+ *  When the app first loads, it creates three tables including path, coordiante and belong
+ *  The detail relationship presents in mavlinkDB.graphml file (yEd)
+ */
+-(void)createDatabase
+{
+    if ([self openDataBase]) {
+        NSString *createCoordinateTable =
+        @"CREATE TABLE IF NOT EXISTS coordinate"
+        "("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+        "latitude DOUBLE NOT NULL,"
+        "longitude DOUBLE NOT NULL"
+        ")";
+        
+        NSString *createPathTable =
+        @"CREATE TABLE IF NOT EXISTS path"
+        "("
+        "id INTEGER PRIMARY KEY NOT NULL,"
+        "name TEXT,"
+        "coordinateid INTEGER NOT NULL,"
+        "length REAL,"
+        "FOREIGN KEY (coordinateid) REFERENCES coordinate(id) ON DELETE CASCADE ON UPDATE CASCADE"
+        ")";
+        
+        NSString *createBelongTable =
+        @"CREATE TABLE IF NOT EXISTS belong"
+        "("
+        "pathid INTEGER,"
+        "coordinateid INTEGER,"
+        "orderno INTEGER NOT NULL,"
+        "FOREIGN KEY (pathid) REFERENCES coordinate(id) ON DELETE CASCADE ON UPDATE CASCADE,"
+        "FOREIGN KEY (coordinateid) REFERENCES path(id) ON DELETE CASCADE ON UPDATE CASCADE,"
+        "PRIMARY KEY (pathid,coordinateid)"
+        ")";
+        
+        char *errorMsg;
+        if (sqlite3_exec(database, [createPathTable UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+            sqlite3_close(database);
+            NSAssert(0, @"Error creating table:%s",errorMsg);
+        }
+        if (sqlite3_exec(database, [createCoordinateTable UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+            sqlite3_close(database);
+            NSAssert(0, @"Error creating table:%s",errorMsg);
+        }
+        if (sqlite3_exec(database, [createBelongTable UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
+            sqlite3_close(database);
+            NSAssert(0, @"Error creating table:%s",errorMsg);
+        }
     }
 }
 
 /**
  *  Call this function to execute sqlite command line
  *
- *  @param sql command line
+ *  @param sql sqlite command line
+ *
+ *  @return YES for successful, NO for failure
  */
--(void)execSQL:(NSString *)sql
+-(BOOL)execSQL:(NSString *)sql
 {
     char *errorMsg;
     if (sqlite3_exec(database, [sql UTF8String], NULL, NULL, &errorMsg)!=SQLITE_OK) {
         sqlite3_close(database);
-       NSAssert(0, @"execute error: %s",errorMsg);
+        NSAssert(0, @"execute error: %s",errorMsg);
+        return NO;
     }
+    return YES;
+}
+
+-(BOOL)recordCoordinateIntoSQL:(CLLocationCoordinate2D)theCoordiante
+{
+    double lat = theCoordiante.latitude;
+    double lon = theCoordiante.longitude;
+    
+    NSString *insert = [NSString stringWithFormat:@"INSERT INTO coordinate(latitude,longitude)"
+                        "VALUES(%lf,%lf);",lat,lon]; // 插入 double 类型有问题
+//    NSLog(@"%@",insert);
+    
+    if([self execSQL:insert]) return YES;
+    return NO;
+    
 }
 
 #pragma mark - Directory
@@ -450,11 +524,30 @@ sqlite3_close(database);
     }
 }
 # pragma mark - Button Click Event
+/**
+ *  将 mapView 中显示的 marker ，按顺序绘制出一条轨迹，然后存入 sqlite 中
+ */
 - (void)addPathButtonPressed
 {
-    NSLog(@"add path button pressed");
-//    [mapView_ clear];
+    //如何连接 markers
+    GMSPolyline *polyLine = [GMSPolyline polylineWithPath:self.tmpPath];
+    polyLine.strokeColor = [UIColor redColor];
+    polyLine.strokeWidth = 3.0f;
+    polyLine.tappable = YES;
+    polyLine.title = @"test poly line";
+    polyLine.map = mapView_;
+    
+    // 手动打开和关闭 sqlite
+    
+    for (int i = 1; i <= [self.tmpPath count]; i++) {
+        if ([self openDataBase]) {
+            if ([self recordCoordinateIntoSQL:[self.tmpPath coordinateAtIndex:i]]) {
+                NSLog(@"marker%d added",i);
+            }
+        }
+    }
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

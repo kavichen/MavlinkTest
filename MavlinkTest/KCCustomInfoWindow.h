@@ -12,5 +12,6 @@
 
 //@property (weak,nonatomic) IBOutlet UILabel *data;
 //@property (weak,nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UILabel *orderNum;
 
 @end

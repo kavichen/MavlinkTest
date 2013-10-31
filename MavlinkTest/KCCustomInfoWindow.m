@@ -9,6 +9,7 @@
 #import "KCCustomInfoWindow.h"
 
 @implementation KCCustomInfoWindow
+@synthesize orderNum = _orderNum;
 
 - (id)initWithFrame:(CGRect)frame
 {

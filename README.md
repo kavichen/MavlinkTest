@@ -4,12 +4,19 @@
 
 #### 参考网站
 * http://www.sqlite.org/
-* 
 
 #### 未解决问题
 1. 为什么要建立数据库索引（index）
 2. 暂时在 googleMapViewController 中检测 app 是否第一次启动，以后要改在别的地方执行
-3. 将mapView 上的 marker 提取 coordinate，放入全局的 NSArray 中，然后按下保存键后，将 coordinate 和 path 放入数据库
+3. 将mapView 上的 marker 提取 coordinate，放入全局的 GMSMutablePath 中，然后按下保存键后，将 coordinate 和 path 放入数据库
+	* 建立 tmpPath
+	* 长按 mapView 时，在该 coordinate 上建立一个新的 marker
+	* 在新建的 Marker 的 infowindow 上，显示该坐标的序号
+	* ~~没有数据传入 tmpPath，怀疑是 get set 的问题	~~
+	* ~~marker = <GMSMarker: 0x1877d1f0> (null) (22.325050, 113.402804), <UIImage: 0x187839e0> // 其中有一个 null~~
+	* ~~在 GMSPath 中找到特定的 marker~~
+	* 2013-10-31 11:22:03.270 MavlinkTest[5023:70b] INSERT INTO coordinate(latitude,longitude)VALUES(-180.000000,-180.000000);
+2013-10-31 11:22:03.272 MavlinkTest[5023:70b] marker6 added // 最后一个点坐标错误
 	
 
 #### 已解决问题
@@ -19,6 +26,7 @@
 	* 参考：http://stackoverflow.com/questions/7337882/sqlite-and-integer-types-int-integer-bigint
 	* 在 sqlite3中，INTEGER 是一个 dynamic typing，可以用来代表许多类型，参考之下链接（其他类型也是相同情况）
 	* http://www.sqlite.org/datatype3.html	
+	
 ----
 - primary key如何 auto increment
   
@@ -67,6 +75,20 @@
 	```
 	* `NSBundle`是什么意思？
 	* `NSUserDefaults`是什么意思？
+	
+----
+- 在显示 UIButton 时，没有出现自定义按钮的图片，而出现了蓝色的按钮
+	* 原代码:  
+	`UIButton *addPathButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];`
+	* iOS7中代码：  
+	`UIButton *addPathButton = [UIButton buttonWithType:UIButtonTypeCustom];`
+----
+- Objective - C 中的 Getter 和 Setter
+	* 参考网站： http://stackoverflow.com/questions/10425827/please-explain-getter-and-setters-in-objective-c
+	
+----
+- iPhone Simulator location
+	* Simulator: ~/Library/Application Support/iPhone Simulator/
 	
 ##### 关于其他
 

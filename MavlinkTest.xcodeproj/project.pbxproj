@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A018BDC1818CADB009A34DF /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A018BDB1818CADB009A34DF /* InfoWindow.xib */; };
 		5A018BDF1818CB7E009A34DF /* KCCustomInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */; };
+		5A04D7D31820AF9500054525 /* infowin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04D7D21820AF9500054525 /* infowin.png */; };
 		5A10177A180FDE8D00D1122E /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A101779180FDE8D00D1122E /* up.png */; };
 		5A372B8717B5D372009F3DDD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A372B8617B5D372009F3DDD /* CoreLocation.framework */; };
 		5A6A46D317470E020021DB7A /* KCMavlinkParamRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */; };
@@ -60,6 +61,7 @@
 		5A96932317462F4A00F382C3 /* KCMavlinkSystemTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A96932217462F4A00F382C3 /* KCMavlinkSystemTime.m */; };
 		5A9693261746353D00F382C3 /* KCMavlinkSetMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */; };
 		5A96B92F181A412400E2C2DC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A96B92E181A412400E2C2DC /* libsqlite3.dylib */; };
+		5AA3EC8B182097B200633E4E /* portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA3EC8A182097B200633E4E /* portrait.png */; };
 		5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */; };
 		5AD9E82218091B8600AE754C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD9E82118091B8500AE754C /* MapKit.framework */; };
 		5ADC03E0173798E6004A9ACC /* KCMavlinkIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */; };
@@ -71,6 +73,7 @@
 		5A018BDB1818CADB009A34DF /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
 		5A018BDD1818CB7E009A34DF /* KCCustomInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCCustomInfoWindow.h; sourceTree = "<group>"; };
 		5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCCustomInfoWindow.m; sourceTree = "<group>"; };
+		5A04D7D21820AF9500054525 /* infowin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infowin.png; sourceTree = "<group>"; };
 		5A101779180FDE8D00D1122E /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		5A372B8617B5D372009F3DDD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5A6A46D117470E020021DB7A /* KCMavlinkParamRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestList.h; sourceTree = "<group>"; };
@@ -308,6 +311,7 @@
 		5A9693241746353C00F382C3 /* KCMavlinkSetMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkSetMode.h; sourceTree = "<group>"; };
 		5A9693251746353D00F382C3 /* KCMavlinkSetMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkSetMode.m; sourceTree = "<group>"; };
 		5A96B92E181A412400E2C2DC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		5AA3EC8A182097B200633E4E /* portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portrait.png; sourceTree = "<group>"; };
 		5AAE5F87178FDAB0002C6C0D /* KCMavlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMessage.h; sourceTree = "<group>"; };
 		5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMessage.m; sourceTree = "<group>"; };
 		5AD9E82118091B8500AE754C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -424,6 +428,8 @@
 		5A90B63A172E09B600DEED7A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A04D7D21820AF9500054525 /* infowin.png */,
+				5AA3EC8A182097B200633E4E /* portrait.png */,
 				5A101779180FDE8D00D1122E /* up.png */,
 				5A90B63B172E09B600DEED7A /* MavlinkTest-Info.plist */,
 				5A90B63C172E09B600DEED7A /* InfoPlist.strings */,
@@ -771,7 +777,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A10177A180FDE8D00D1122E /* up.png in Resources */,
+				5A04D7D31820AF9500054525 /* infowin.png in Resources */,
 				5A90B63E172E09B600DEED7A /* InfoPlist.strings in Resources */,
+				5AA3EC8B182097B200633E4E /* portrait.png in Resources */,
 				5AE832FE18191C50005FCA31 /* back.png in Resources */,
 				5A90B646172E09B600DEED7A /* Default.png in Resources */,
 				5A018BDC1818CADB009A34DF /* InfoWindow.xib in Resources */,
