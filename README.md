@@ -8,24 +8,33 @@
 #### 未解决问题
 1. 为什么要建立数据库索引（index）
 2. 暂时在 googleMapViewController 中检测 app 是否第一次启动，以后要改在别的地方执行
-3. 将mapView 上的 marker 提取 coordinate，放入全局的 GMSMutablePath 中，然后按下保存键后，将 coordinate 和 path 放入数据库
-	* 建立 tmpPath
-	* 长按 mapView 时，在该 coordinate 上建立一个新的 marker
-	* 在新建的 Marker 的 infowindow 上，显示该坐标的序号
-	* ~~没有数据传入 tmpPath，怀疑是 get set 的问题	~~
-	* ~~marker = <GMSMarker: 0x1877d1f0> (null) (22.325050, 113.402804), <UIImage: 0x187839e0> // 其中有一个 null~~
-	* ~~在 GMSPath 中找到特定的 marker~~
-	* 2013-10-31 11:22:03.270 MavlinkTest[5023:70b] INSERT INTO coordinate(latitude,longitude)VALUES(-180.000000,-180.000000);
-2013-10-31 11:22:03.272 MavlinkTest[5023:70b] marker6 added // 最后一个点坐标错误
-	
+3. 自定义 marker 的UI选择（Menu）
+	* https://github.com/levey/AwesomeMenu
+4. 找一个侧边栏的 UI，通过滑动可以获取存入数据库的 path
+	* 找一个开源的侧边栏
+		* ~~https://github.com/romaonthego/REFrostedViewController~~ 
+		* https://github.com/rnystrom/RNFrostedSidebar
+		* https://github.com/edgecase/ecslidingviewcontroller  http://vimeo.com/35959384
+
 
 #### 已解决问题
+* ~~将mapView 上的 marker 提取 coordinate，放入全局的 GMSMutablePath 中，然后按下保存键后，将 coordinate 和 path 放入数据库~~
+	* ~~建立 tmpPath~~
+	* ~~长按 mapView 时，在该 coordinate 上建立一个新的 marke~~r
+	* ~~在新建的 Marker 的 infowindow 上，显示该坐标的序号~~
+	* ~~没有数据传入 tmpPath，怀疑是 get set 的问题~~
+	* ~~marker = <GMSMarker: 0x1877d1f0> (null) (22.325050, 113.402804), <UIImage: 0x187839e0> // 其中有一个 null~~
+	* ~~在 GMSPath 中找到特定的 marker~~
+	* ~~2013-10-31 11:22:03.270 MavlinkTest[5023:70b] INSERT INTO 		coordinate(latitude,longitude)VALUES(-180.000000,-180.000000);
+		2013-10-31 11:22:03.272 MavlinkTest[5023:70b] marker6 added // 最后一个点坐标错误~~
+
+#### 问题归档
 ##### 关于数据库
 ----
 - 在 sqlite3 中，integer 和 int 类型之间的却别
 	* 参考：http://stackoverflow.com/questions/7337882/sqlite-and-integer-types-int-integer-bigint
 	* 在 sqlite3中，INTEGER 是一个 dynamic typing，可以用来代表许多类型，参考之下链接（其他类型也是相同情况）
-	* http://www.sqlite.org/datatype3.html	
+	* http://www.sqlite.org/datatype3.html
 	
 ----
 - primary key如何 auto increment
@@ -100,3 +109,9 @@
 	kavi-chens-MacBook-Air:MavlinkTest kavi$ git push origin master
 	```
 ---
+
+- 如何加入 mavlink 到Xcode 中
+	* Xcode -> File -> Add Files to "MavlinkTest" -> `~/Developer/mavlink/`这个文件夹
+	* 完成
+ ----
+ 

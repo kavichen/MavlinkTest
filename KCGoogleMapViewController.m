@@ -287,7 +287,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 
 - (CLLocationCoordinate2D)getLastCoordinateInPath:(GMSPath *)thePath
 {
-    NSInteger pathCount = [thePath count];
+    NSInteger pathCount = [thePath count]; // Index的最大值比 count 小1
     return [thePath coordinateAtIndex:pathCount-1];
 }
 #pragma mark - GMSMapViewDelegate
@@ -321,7 +321,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     double lon;
     double lat;
     NSLog(@"marker lon = %lf, lat = %lf",marker.position.longitude,marker.position.latitude);
-    for (int i = 0; i< [self.tmpPath count]; i++) {
+    for (int i = 0; i < [self.tmpPath count]; i++) {
         lon = [self.tmpPath coordinateAtIndex:i].longitude;
         lat = [self.tmpPath coordinateAtIndex:i].latitude;
         
@@ -483,6 +483,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     NSArray *directoryContents = [fileManager contentsOfDirectoryAtPath:documentDirectory error:&error];
 //    NSLog(@"%@",directoryContents);
 }
+
 /*
 NSString *createSQL = @"CREATE TABLE IF NOT EXISTS FIELDS "
 "(ROW INTEGER PRIMARY KEY, FIELD_DATA TEXT);";
@@ -523,6 +524,7 @@ sqlite3_close(database);
         mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
     }
 }
+
 # pragma mark - Button Click Event
 /**
  *  将 mapView 中显示的 marker ，按顺序绘制出一条轨迹，然后存入 sqlite 中
@@ -539,7 +541,7 @@ sqlite3_close(database);
     
     // 手动打开和关闭 sqlite
     
-    for (int i = 1; i <= [self.tmpPath count]; i++) {
+    for (int i = 0; i < [self.tmpPath count]; i++) {
         if ([self openDataBase]) {
             if ([self recordCoordinateIntoSQL:[self.tmpPath coordinateAtIndex:i]]) {
                 NSLog(@"marker%d added",i);
