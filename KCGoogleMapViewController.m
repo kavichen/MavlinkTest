@@ -22,6 +22,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 @property (nonatomic,strong) NSNumber *boatHeading;
 @property (nonatomic,strong) NSNumber *previousHeading;
 @property (nonatomic,strong) GMSMutablePath *tmpPath;
+@property (nonatomic,strong) NSMutableIndexSet *optionIndex;
 @end
 
 @implementation KCGoogleMapViewController{
@@ -202,7 +203,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.optionIndex = [NSMutableIndexSet indexSetWithIndex:1];
     //Detect the first launch
     if ([self checkFirstLaunchOrNot]) {
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
@@ -220,8 +221,38 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     // load UI View Part
     [self loadMapView];
     [self buildAddPathButton];
+    [self buildOptionSideBarButton];
 //    [addPathButton addTarget:self action:@selector(addPathButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 //    [mapView_ addSubview:addPathButton];
+}
+
+-(IBAction)onBurger:(id)sender
+{
+    NSArray *images = @[[UIImage imageNamed:@"gear"]];
+    NSArray *colors = @[
+                        [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1]];
+    RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndex borderColors:colors];
+    callout.delegate = self;
+    callout.showFromRight = YES;
+    [callout show];
+}
+
+#pragma mark - RNFrostedSidebarDelegate
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
+    NSLog(@"Tapped item at index %i",index);
+    if (index == 3) {
+        [sidebar dismiss];
+    }
+}
+
+- (void)sidebar:(RNFrostedSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
+    if (itemEnabled) {
+        [self.optionIndex addIndex:index];
+    }
+    else {
+        [self.optionIndex removeIndex:index];
+    }
 }
 
 -(void)buildAddPathButton
@@ -233,6 +264,17 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     addPathButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
     [addPathButton setImage:btnImage forState:UIControlStateNormal];
     [mapView_ addSubview:addPathButton];
+}
+
+-(void)buildOptionSideBarButton
+{
+    UIButton *sideBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [(UIButton *)sideBarButton addTarget:self action:@selector(onBurger:) forControlEvents:UIControlEventTouchUpInside];
+    sideBarButton.frame = CGRectMake(mapView_.bounds.size.width - 300, mapView_.bounds.size.height - 500, 52, 52);
+    UIImage *btnImage = [UIImage imageNamed:@"gear.png"];
+    sideBarButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    [sideBarButton setImage:btnImage forState:UIControlStateNormal];
+    [mapView_ addSubview:sideBarButton];
 }
 
 -(void)sendBoatHeading:(NSNumber *)boatHeadingDirection andCoordinate:(CLLocationCoordinate2D)coordinate
@@ -549,6 +591,9 @@ sqlite3_close(database);
         }
     }
 }
+
+# pragma mark - RNFrostedSidebar
+
 
 - (void)didReceiveMemoryWarning
 {

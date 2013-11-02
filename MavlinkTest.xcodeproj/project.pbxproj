@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FB163EA4EC74B2E80DD2608 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB7AAAEE08B4B52A4B58117 /* libPods.a */; };
 		5A018BDC1818CADB009A34DF /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A018BDB1818CADB009A34DF /* InfoWindow.xib */; };
 		5A018BDF1818CB7E009A34DF /* KCCustomInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */; };
 		5A04D7D31820AF9500054525 /* infowin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04D7D21820AF9500054525 /* infowin.png */; };
@@ -60,6 +61,7 @@
 		5A96B92F181A412400E2C2DC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A96B92E181A412400E2C2DC /* libsqlite3.dylib */; };
 		5AA3EC8B182097B200633E4E /* portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA3EC8A182097B200633E4E /* portrait.png */; };
 		5AAE5F89178FDAB0002C6C0D /* KCMavlinkMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */; };
+		5AB750AB1824C8A200028343 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB750AA1824C8A200028343 /* gear.png */; };
 		5AD9E82218091B8600AE754C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD9E82118091B8500AE754C /* MapKit.framework */; };
 		5ADC03E0173798E6004A9ACC /* KCMavlinkIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */; };
 		5ADC03E31737A623004A9ACC /* KCSokcet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADC03E21737A622004A9ACC /* KCSokcet.m */; };
@@ -153,6 +155,7 @@
 		5AA3EC8A182097B200633E4E /* portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portrait.png; sourceTree = "<group>"; };
 		5AAE5F87178FDAB0002C6C0D /* KCMavlinkMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkMessage.h; sourceTree = "<group>"; };
 		5AAE5F88178FDAB0002C6C0D /* KCMavlinkMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkMessage.m; sourceTree = "<group>"; };
+		5AB750AA1824C8A200028343 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		5AD9E82118091B8500AE754C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5ADC03DE173798E6004A9ACC /* KCMavlinkIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkIO.h; sourceTree = "<group>"; };
 		5ADC03DF173798E6004A9ACC /* KCMavlinkIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkIO.m; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 		5ADFC3081823B1DD0014943B /* testsuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testsuite.h; sourceTree = "<group>"; };
 		5ADFC3091823B1DD0014943B /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		5AE832FD18191C50005FCA31 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		CFE57E87D7B84BAC839A04FC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		FBB7AAAEE08B4B52A4B58117 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +347,7 @@
 				5A90B634172E09B600DEED7A /* UIKit.framework in Frameworks */,
 				5A90B636172E09B600DEED7A /* Foundation.framework in Frameworks */,
 				5A90B638172E09B600DEED7A /* CoreGraphics.framework in Frameworks */,
+				3FB163EA4EC74B2E80DD2608 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +360,7 @@
 				5A90B639172E09B600DEED7A /* MavlinkTest */,
 				5A90B632172E09B600DEED7A /* Frameworks */,
 				5A90B631172E09B600DEED7A /* Products */,
+				CFE57E87D7B84BAC839A04FC /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -388,6 +395,7 @@
 				5A90B633172E09B600DEED7A /* UIKit.framework */,
 				5A90B635172E09B600DEED7A /* Foundation.framework */,
 				5A90B637172E09B600DEED7A /* CoreGraphics.framework */,
+				FBB7AAAEE08B4B52A4B58117 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -708,6 +716,7 @@
 		5AE832FC18191C08005FCA31 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5AB750AA1824C8A200028343 /* gear.png */,
 				5AE832FD18191C50005FCA31 /* back.png */,
 			);
 			name = Resource;
@@ -720,11 +729,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A90B653172E09B600DEED7A /* Build configuration list for PBXNativeTarget "MavlinkTest" */;
 			buildPhases = (
+				97F6365588CA4D4F8AB9B2D4 /* Check Pods Manifest.lock */,
 				5A90B62C172E09B600DEED7A /* Sources */,
 				5A90B62D172E09B600DEED7A /* Frameworks */,
 				5AA3EC7D181F950B00633E4E /* Run Script */,
 				5A90B62E172E09B600DEED7A /* Resources */,
 				5A2BDCFE174093CB0028AA7D /* ShellScript */,
+				E3F46BE3D9654EDE8267FD6E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -769,6 +780,7 @@
 			files = (
 				5A10177A180FDE8D00D1122E /* up.png in Resources */,
 				5ADFC138182343D10014943B /* GoogleMaps.bundle in Resources */,
+				5AB750AB1824C8A200028343 /* gear.png in Resources */,
 				5A04D7D31820AF9500054525 /* infowin.png in Resources */,
 				5A90B63E172E09B600DEED7A /* InfoPlist.strings in Resources */,
 				5AA3EC8B182097B200633E4E /* portrait.png in Resources */,
@@ -810,6 +822,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+		97F6365588CA4D4F8AB9B2D4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E3F46BE3D9654EDE8267FD6E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -939,6 +981,7 @@
 		};
 		5A90B654172E09B600DEED7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFE57E87D7B84BAC839A04FC /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
@@ -962,6 +1005,7 @@
 		};
 		5A90B655172E09B600DEED7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFE57E87D7B84BAC839A04FC /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Guangzhong Cai (UN2UNY4959)";

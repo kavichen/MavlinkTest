@@ -14,6 +14,11 @@
 	* 找一个开源的侧边栏
 		* ~~https://github.com/romaonthego/REFrostedViewController~~ 
 		* https://github.com/rnystrom/RNFrostedSidebar
+			* 安装 RNFrostedSidebar
+				* ~~安装CocoaPods~~
+				* 研究 RNFrostedSidebar Example Source Code
+					* ~~什么是 `NSMUTABLEINDEXSET`~~
+					* 
 		* https://github.com/edgecase/ecslidingviewcontroller  http://vimeo.com/35959384
 
 
