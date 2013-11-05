@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MTStatusBarOverlay.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RNFrostedSidebar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>35F2845542814A4092216F64</key>
+		<key>5EDE591A67574811A0C3C7DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F941E861F9F744D3AA2C4545</key>
+		<key>95107194F2CC4ACCB4433B45</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CBE9011990A24CB094DD29BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E338D398D9B148D7A1AC9841</key>
 		<dict>
 			<key>primary</key>
 			<true/>

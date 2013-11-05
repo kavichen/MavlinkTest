@@ -233,7 +233,8 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
                         [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1]];
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndex borderColors:colors];
     callout.delegate = self;
-    callout.showFromRight = YES;
+//    callout.showFromRight = YES;
+//    [callout showAnimated:YES];
     [callout show];
 }
 
@@ -241,6 +242,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %i",index);
+    [sidebar dismiss];
     if (index == 3) {
         [sidebar dismiss];
     }
@@ -254,6 +256,8 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
         [self.optionIndex removeIndex:index];
     }
 }
+
+#pragma mark - buildButton Section
 
 -(void)buildAddPathButton
 {
@@ -271,7 +275,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
     UIButton *sideBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [(UIButton *)sideBarButton addTarget:self action:@selector(onBurger:) forControlEvents:UIControlEventTouchUpInside];
     sideBarButton.frame = CGRectMake(mapView_.bounds.size.width - 300, mapView_.bounds.size.height - 500, 52, 52);
-    UIImage *btnImage = [UIImage imageNamed:@"gear.png"];
+    UIImage *btnImage = [UIImage imageNamed:@"portrait.png"];
     sideBarButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
     [sideBarButton setImage:btnImage forState:UIControlStateNormal];
     [mapView_ addSubview:sideBarButton];

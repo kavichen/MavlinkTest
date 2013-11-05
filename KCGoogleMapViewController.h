@@ -18,7 +18,6 @@
 #import <sqlite3.h>
 #import <RNFrostedSidebar.h>
 
-
 @interface KCGoogleMapViewController : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate,KCLocationDelegate,RNFrostedSidebarDelegate>
 {
     sqlite3 *database;

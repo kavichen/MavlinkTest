@@ -20,7 +20,22 @@
 					* ~~什么是 `NSMUTABLEINDEXSET`~~
 					* 
 		* https://github.com/edgecase/ecslidingviewcontroller  http://vimeo.com/35959384
-
+5. 添加 MTStatusBarOverlay 状态栏通知 
+	* 研究 通知栏 框架
+6. 重新设计 UI
+	* 需要用三个 view 来区分不同的功能
+		* 基本 view （设计成一个 UI 控件）
+			* 加速（长按最快速），减速（长按停止）
+			* 左右转向
+		* 航线以及抛锚 view
+			* 
+	* 找一款用来画线框图的工具
+		* proto.io -> 只能用15天
+		* 确定使用 Axure 作为画 UI 线框图工具
+			* 如何添加 Axure 库 -> 将 `.rplib` 文件放入 `/Users/kavi/Documents/Axure` 中
+		* 找 4寸 iPhone 的 UI 尺寸
+	* UI 设计原则
+		* 所有设计尽量使用开关模式，不要输入文字
 
 #### 已解决问题
 * ~~将mapView 上的 marker 提取 coordinate，放入全局的 GMSMutablePath 中，然后按下保存键后，将 coordinate 和 path 放入数据库~~

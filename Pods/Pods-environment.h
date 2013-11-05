@@ -6,6 +6,18 @@
 // project.
 
 
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// MTStatusBarOverlay
+#define COCOAPODS_POD_AVAILABLE_MTStatusBarOverlay
+#define COCOAPODS_VERSION_MAJOR_MTStatusBarOverlay 0
+#define COCOAPODS_VERSION_MINOR_MTStatusBarOverlay 9
+#define COCOAPODS_VERSION_PATCH_MTStatusBarOverlay 1
+
 // RNFrostedSidebar
 #define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
 #define COCOAPODS_VERSION_MAJOR_RNFrostedSidebar 0
