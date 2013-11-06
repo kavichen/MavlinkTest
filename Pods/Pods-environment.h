@@ -18,6 +18,12 @@
 #define COCOAPODS_VERSION_MINOR_MTStatusBarOverlay 9
 #define COCOAPODS_VERSION_PATCH_MTStatusBarOverlay 1
 
+// RESideMenu
+#define COCOAPODS_POD_AVAILABLE_RESideMenu
+#define COCOAPODS_VERSION_MAJOR_RESideMenu 3
+#define COCOAPODS_VERSION_MINOR_RESideMenu 2
+#define COCOAPODS_VERSION_PATCH_RESideMenu 3
+
 // RNFrostedSidebar
 #define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
 #define COCOAPODS_VERSION_MAJOR_RNFrostedSidebar 0

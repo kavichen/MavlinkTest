@@ -1,16 +1,19 @@
 PODS:
   - MBProgressHUD (0.8)
   - MTStatusBarOverlay (0.9.1)
+  - RESideMenu (3.2.3)
   - RNFrostedSidebar (0.2.0)
 
 DEPENDENCIES:
   - MBProgressHUD (~> 0.8)
   - MTStatusBarOverlay (~> 0.9.1)
+  - RESideMenu (~> 3.2.3)
   - RNFrostedSidebar (~> 0.2.0)
 
 SPEC CHECKSUMS:
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
+  RESideMenu: a3978f58e9da42a745c76ef0a8fd7a314963630d
   RNFrostedSidebar: 36339438a07088fd3ee3926db03af499477ee048
 
 COCOAPODS: 0.27.1

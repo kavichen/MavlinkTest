@@ -233,7 +233,7 @@ const CLLocationDegrees nbLatitude = 29.858904;// inital latitude
                         [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1]];
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndex borderColors:colors];
     callout.delegate = self;
-//    callout.showFromRight = YES;
+    callout.showFromRight = YES;
 //    [callout showAnimated:YES];
     [callout show];
 }
@@ -596,7 +596,11 @@ sqlite3_close(database);
     }
 }
 
-# pragma mark - RNFrostedSidebar
+# pragma mark - RESideMenu
+- (IBAction)showMenu
+{
+    [self.sideMenuViewController presentMenuViewController];
+}
 
 
 - (void)didReceiveMemoryWarning

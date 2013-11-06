@@ -13,6 +13,10 @@
 		5A04D7D31820AF9500054525 /* infowin.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04D7D21820AF9500054525 /* infowin.png */; };
 		5A10177A180FDE8D00D1122E /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A101779180FDE8D00D1122E /* up.png */; };
 		5A372B8717B5D372009F3DDD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A372B8617B5D372009F3DDD /* CoreLocation.framework */; };
+		5A5EEDD81828965600F7D1F3 /* KCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EEDD71828965600F7D1F3 /* KCRootViewController.m */; };
+		5A5EEDDB182896DC00F7D1F3 /* KCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EEDDA182896DC00F7D1F3 /* KCMenuViewController.m */; };
+		5A5EEDDD1828A1C100F7D1F3 /* Stars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5EEDDC1828A1C100F7D1F3 /* Stars@2x.png */; };
+		5A5EEDDF1828B72600F7D1F3 /* MenuBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A5EEDDE1828B72600F7D1F3 /* MenuBackground@2x.png */; };
 		5A6A46D317470E020021DB7A /* KCMavlinkParamRequestList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */; };
 		5A6A46D6174711810021DB7A /* KCMavlinkParamRequestRead.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D5174711810021DB7A /* KCMavlinkParamRequestRead.m */; };
 		5A6A46D91747176D0021DB7A /* KCMavlinkParamValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A46D81747176D0021DB7A /* KCMavlinkParamValue.m */; };
@@ -69,6 +73,12 @@
 		5ADFC138182343D10014943B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFC137182343D10014943B /* GoogleMaps.bundle */; };
 		5ADFC13B182359770014943B /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFC13A182359770014943B /* GCDAsyncUdpSocket.m */; };
 		5AE832FE18191C50005FCA31 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE832FD18191C50005FCA31 /* back.png */; };
+		5AF3B1B71829E082007A25E5 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF3B1B61829E082007A25E5 /* bg.png */; };
+		5AF3B1BE1829F37C007A25E5 /* IconCalendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF3B1B91829F37C007A25E5 /* IconCalendar@2x.png */; };
+		5AF3B1BF1829F37C007A25E5 /* IconEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF3B1BA1829F37C007A25E5 /* IconEmpty@2x.png */; };
+		5AF3B1C01829F37C007A25E5 /* IconHome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF3B1BB1829F37C007A25E5 /* IconHome@2x.png */; };
+		5AF3B1C11829F37C007A25E5 /* IconProfile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF3B1BC1829F37C007A25E5 /* IconProfile@2x.png */; };
+		5AF3B1C21829F37C007A25E5 /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AF3B1BD1829F37C007A25E5 /* IconSettings@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +88,12 @@
 		5A04D7D21820AF9500054525 /* infowin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infowin.png; sourceTree = "<group>"; };
 		5A101779180FDE8D00D1122E /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
 		5A372B8617B5D372009F3DDD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5A5EEDD61828965600F7D1F3 /* KCRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCRootViewController.h; sourceTree = "<group>"; };
+		5A5EEDD71828965600F7D1F3 /* KCRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCRootViewController.m; sourceTree = "<group>"; };
+		5A5EEDD9182896DC00F7D1F3 /* KCMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMenuViewController.h; sourceTree = "<group>"; };
+		5A5EEDDA182896DC00F7D1F3 /* KCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMenuViewController.m; sourceTree = "<group>"; };
+		5A5EEDDC1828A1C100F7D1F3 /* Stars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars@2x.png"; sourceTree = "<group>"; };
+		5A5EEDDE1828B72600F7D1F3 /* MenuBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBackground@2x.png"; sourceTree = "<group>"; };
 		5A6A46D117470E020021DB7A /* KCMavlinkParamRequestList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestList.h; sourceTree = "<group>"; };
 		5A6A46D217470E020021DB7A /* KCMavlinkParamRequestList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCMavlinkParamRequestList.m; sourceTree = "<group>"; };
 		5A6A46D4174711810021DB7A /* KCMavlinkParamRequestRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCMavlinkParamRequestRead.h; sourceTree = "<group>"; };
@@ -319,6 +335,12 @@
 		5ADFC3081823B1DD0014943B /* testsuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testsuite.h; sourceTree = "<group>"; };
 		5ADFC3091823B1DD0014943B /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		5AE832FD18191C50005FCA31 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		5AF3B1B61829E082007A25E5 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		5AF3B1B91829F37C007A25E5 /* IconCalendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconCalendar@2x.png"; sourceTree = "<group>"; };
+		5AF3B1BA1829F37C007A25E5 /* IconEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconEmpty@2x.png"; sourceTree = "<group>"; };
+		5AF3B1BB1829F37C007A25E5 /* IconHome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconHome@2x.png"; sourceTree = "<group>"; };
+		5AF3B1BC1829F37C007A25E5 /* IconProfile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconProfile@2x.png"; sourceTree = "<group>"; };
+		5AF3B1BD1829F37C007A25E5 /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSettings@2x.png"; sourceTree = "<group>"; };
 		CFE57E87D7B84BAC839A04FC /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FBB7AAAEE08B4B52A4B58117 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -425,6 +447,10 @@
 				5A018BDB1818CADB009A34DF /* InfoWindow.xib */,
 				5A018BDD1818CB7E009A34DF /* KCCustomInfoWindow.h */,
 				5A018BDE1818CB7E009A34DF /* KCCustomInfoWindow.m */,
+				5A5EEDD61828965600F7D1F3 /* KCRootViewController.h */,
+				5A5EEDD71828965600F7D1F3 /* KCRootViewController.m */,
+				5A5EEDD9182896DC00F7D1F3 /* KCMenuViewController.h */,
+				5A5EEDDA182896DC00F7D1F3 /* KCMenuViewController.m */,
 			);
 			path = MavlinkTest;
 			sourceTree = "<group>";
@@ -716,8 +742,16 @@
 		5AE832FC18191C08005FCA31 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				5AF3B1B91829F37C007A25E5 /* IconCalendar@2x.png */,
+				5AF3B1BA1829F37C007A25E5 /* IconEmpty@2x.png */,
+				5AF3B1BB1829F37C007A25E5 /* IconHome@2x.png */,
+				5AF3B1BC1829F37C007A25E5 /* IconProfile@2x.png */,
+				5AF3B1BD1829F37C007A25E5 /* IconSettings@2x.png */,
+				5AF3B1B61829E082007A25E5 /* bg.png */,
+				5A5EEDDC1828A1C100F7D1F3 /* Stars@2x.png */,
 				5AB750AA1824C8A200028343 /* gear.png */,
 				5AE832FD18191C50005FCA31 /* back.png */,
+				5A5EEDDE1828B72600F7D1F3 /* MenuBackground@2x.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -778,17 +812,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF3B1C01829F37C007A25E5 /* IconHome@2x.png in Resources */,
 				5A10177A180FDE8D00D1122E /* up.png in Resources */,
 				5ADFC138182343D10014943B /* GoogleMaps.bundle in Resources */,
 				5AB750AB1824C8A200028343 /* gear.png in Resources */,
+				5AF3B1BE1829F37C007A25E5 /* IconCalendar@2x.png in Resources */,
+				5AF3B1C11829F37C007A25E5 /* IconProfile@2x.png in Resources */,
+				5AF3B1BF1829F37C007A25E5 /* IconEmpty@2x.png in Resources */,
 				5A04D7D31820AF9500054525 /* infowin.png in Resources */,
 				5A90B63E172E09B600DEED7A /* InfoPlist.strings in Resources */,
+				5AF3B1B71829E082007A25E5 /* bg.png in Resources */,
 				5AA3EC8B182097B200633E4E /* portrait.png in Resources */,
 				5AE832FE18191C50005FCA31 /* back.png in Resources */,
 				5A90B646172E09B600DEED7A /* Default.png in Resources */,
+				5A5EEDDD1828A1C100F7D1F3 /* Stars@2x.png in Resources */,
+				5A5EEDDF1828B72600F7D1F3 /* MenuBackground@2x.png in Resources */,
 				5A018BDC1818CADB009A34DF /* InfoWindow.xib in Resources */,
 				5A90B648172E09B600DEED7A /* Default@2x.png in Resources */,
 				5A90B64A172E09B600DEED7A /* Default-568h@2x.png in Resources */,
+				5AF3B1C21829F37C007A25E5 /* IconSettings@2x.png in Resources */,
 				5A90B64D172E09B600DEED7A /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -879,6 +921,8 @@
 				5ADFC13B182359770014943B /* GCDAsyncUdpSocket.m in Sources */,
 				5A6A46DF17472BBC0021DB7A /* KCMavlinkCommandACK.m in Sources */,
 				5A6A46E217472DD40021DB7A /* KCMavlinkMissionCount.m in Sources */,
+				5A5EEDDB182896DC00F7D1F3 /* KCMenuViewController.m in Sources */,
+				5A5EEDD81828965600F7D1F3 /* KCRootViewController.m in Sources */,
 				5A6A46E5174730440021DB7A /* KCMavlinkMissionRequest.m in Sources */,
 				5A6A46E8174747A00021DB7A /* KCMavlinkMissionItem.m in Sources */,
 				5A6A46EB17474ECC0021DB7A /* KCMavlinkMissionACK.m in Sources */,

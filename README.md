@@ -19,9 +19,11 @@
 				* 研究 RNFrostedSidebar Example Source Code
 					* ~~什么是 `NSMUTABLEINDEXSET`~~
 					* 
-		* https://github.com/edgecase/ecslidingviewcontroller  http://vimeo.com/35959384
+		* https://github.com/edgecase/ecslidingviewcontroller  http://vimeo.com/3595938
+		
 5. 添加 MTStatusBarOverlay 状态栏通知 
 	* 研究 通知栏 框架
+	
 6. 重新设计 UI
 	* 需要用三个 view 来区分不同的功能
 		* 基本 view （设计成一个 UI 控件）
@@ -30,12 +32,14 @@
 		* 航线以及抛锚 view
 			* 
 	* 找一款用来画线框图的工具
-		* proto.io -> 只能用15天
-		* 确定使用 Axure 作为画 UI 线框图工具
-			* 如何添加 Axure 库 -> 将 `.rplib` 文件放入 `/Users/kavi/Documents/Axure` 中
-		* 找 4寸 iPhone 的 UI 尺寸
+		* ~~proto.io -> 只能用15天~~
+		* ~~确定使用 Axure 作为画 UI 线框图工具~~
+		* 如何添加 Axure 库 -> 将 `.rplib` 文件放入 `/Users/kavi/Documents/Axure` 中
+		* ~~找 4寸 iPhone 的 UI 尺寸~~
 	* UI 设计原则
 		* 所有设计尽量使用开关模式，不要输入文字
+7. 什么是image.xcassets
+	* 
 
 #### 已解决问题
 * ~~将mapView 上的 marker 提取 coordinate，放入全局的 GMSMutablePath 中，然后按下保存键后，将 coordinate 和 path 放入数据库~~
@@ -47,6 +51,11 @@
 	* ~~在 GMSPath 中找到特定的 marker~~
 	* ~~2013-10-31 11:22:03.270 MavlinkTest[5023:70b] INSERT INTO 		coordinate(latitude,longitude)VALUES(-180.000000,-180.000000);
 		2013-10-31 11:22:03.272 MavlinkTest[5023:70b] marker6 added // 最后一个点坐标错误~~
+* ~~加入 RESideMenu~~
+	* ~~将 RESideMenu 集成到 app 中~~
+	* ~~RESideMenu background image 不能正常显示~~
+		* ~~查看 RESideMenu.m 的 source code 是否相同 - 相同~~
+		* 在 Menu View Controller 中的 view 下，设置 background 为 Clear color
 
 #### 问题归档
 ##### 关于数据库

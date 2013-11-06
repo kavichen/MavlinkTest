@@ -68,10 +68,6 @@
 @synthesize locationManager = _locationManager;
 @synthesize showBoatLocationDataDelegate = _shwoBoatLocationDataDelegate;
 
--(void)awakeFromNib
-{
-    self.tabBarController.tabBar.alpha = 0.5;
-}
 
 -(GCDAsyncUdpSocket *)serverSocket
 {
@@ -111,6 +107,7 @@
     }
     return _thisComponentID;
 }
+
 
 - (void)viewDidLoad
 {
@@ -340,6 +337,11 @@ withFilterContext:(id)filterContext
     NSLog(@"Send REBOOT_SHUTDOWN");
     self.sendData = [NSData dataWithBytes:buf length:len];
     [self.serverSocket sendData:self.sendData toHost:self.address port:port withTimeout:-1 tag:tag];
+}
+
+- (IBAction)showMenu
+{
+    [self.sideMenuViewController presentMenuViewController];
 }
 
 - (void)viewDidUnload {

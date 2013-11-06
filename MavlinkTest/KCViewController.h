@@ -14,6 +14,7 @@
 #import "KCMavlinkCommandLong.h"
 #import <CoreLocation/CoreLocation.h>
 #import "KCLocationDelegate.h"
+#import <RESideMenu.h>
 
 
 
@@ -24,4 +25,5 @@
 
 @property (nonatomic,strong) id<KCLocationDelegate> showBoatLocationDataDelegate;
 //@property (nonatomic,strong) NSString *address;
+- (IBAction)showMenu;
 @end

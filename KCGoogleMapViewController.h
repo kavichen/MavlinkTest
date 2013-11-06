@@ -17,10 +17,12 @@
 #import "KCCustomInfoWindow.h"
 #import <sqlite3.h>
 #import <RNFrostedSidebar.h>
+#import <RESideMenu.h>
 
 @interface KCGoogleMapViewController : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate,KCLocationDelegate,RNFrostedSidebarDelegate>
 {
     sqlite3 *database;
 }
 @property (nonatomic,strong) CLLocationManager *locationManger;
+- (IBAction)showMenu;
 @end
